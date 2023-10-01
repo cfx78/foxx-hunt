@@ -17,6 +17,8 @@ import { Input } from '@nextui-org/react';
 
 import { useRouter } from 'next/navigation';
 
+import { signIn } from 'next-auth/react';
+
 type Props = {
 	title: string;
 	description: string;
@@ -24,7 +26,7 @@ type Props = {
 	registration?: boolean;
 };
 
-const popup = (props: Props) => {
+const Popup = (props: Props) => {
 	const router = useRouter();
 
 	const [data, setData] = useState({
@@ -46,17 +48,18 @@ const popup = (props: Props) => {
 			});
 			const user = await response.json();
 			console.log(user);
-			router.push('/');
-		} else {
-			const response = await fetch('/api/login', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({ data }),
+
+			signIn('credentials', {
+				...data,
+				redirect: false,
 			});
-			const user = await response.json();
-			console.log(user);
+
+			router.push('/dashboard');
+		} else {
+			signIn('credentials', {
+				...data,
+				redirect: false,
+			});
 			router.push('/dashboard');
 		}
 	};
@@ -78,17 +81,22 @@ const popup = (props: Props) => {
 				{props.title === 'Email' && (
 					<div className='w-full h-full'>
 						<form onSubmit={handleSubmit}>
-							<Input
-								type='text'
-								variant='underlined'
-								label='Name'
-								name='name'
-								value={data.name}
-								onChange={(e) =>
-									setData({ ...data, name: e.target.value })
-								}
-								className='max-w-xs'
-							/>
+							{props.registration && (
+								<Input
+									type='text'
+									variant='underlined'
+									label='Name'
+									name='name'
+									value={data.name}
+									onChange={(e) =>
+										setData({
+											...data,
+											name: e.target.value,
+										})
+									}
+									className='max-w-xs'
+								/>
+							)}
 							<Input
 								type='email'
 								variant='underlined'
@@ -127,4 +135,4 @@ const popup = (props: Props) => {
 	);
 };
 
-export default popup;
+export default Popup;

@@ -20,6 +20,8 @@ import {
 } from 'react-icons/pi';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]/route';
+import { Button } from '@/components/ui/button';
+import GoogleButton from '@/components/layout/googleButton';
 
 export default async function Home() {
 	const session = await getServerSession(authOptions);
@@ -83,11 +85,7 @@ export default async function Home() {
 					</div>
 					<p className='pt-4'>sign up</p>
 					<div className='flex w-full h-full items-center justify-evenly py-5'>
-						<Popup
-							trigger={<PiGoogleLogoThin className='w-6 h-6' />}
-							title='Google'
-							description='This would be a google sign up'
-						/>
+						<GoogleButton />
 						<Popup
 							trigger={<PiGithubLogoThin className='w-6 h-6' />}
 							title='Github'
