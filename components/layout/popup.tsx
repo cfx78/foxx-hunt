@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+
 import {
 	Dialog,
 	DialogContent,
@@ -6,16 +10,57 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog';
-import { type } from 'os';
+
 import { Button } from '../ui/button';
+
+import { Input } from '@nextui-org/react';
+
+import { useRouter } from 'next/navigation';
 
 type Props = {
 	title: string;
 	description: string;
 	trigger: any;
+	registration?: boolean;
 };
 
 const popup = (props: Props) => {
+	const router = useRouter();
+
+	const [data, setData] = useState({
+		name: '',
+		email: '',
+		password: '',
+	});
+
+	const handleSubmit = async (e: any) => {
+		e.preventDefault();
+
+		if (props.registration) {
+			const response = await fetch('/api/register', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ data }),
+			});
+			const user = await response.json();
+			console.log(user);
+			router.push('/');
+		} else {
+			const response = await fetch('/api/login', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ data }),
+			});
+			const user = await response.json();
+			console.log(user);
+			router.push('/dashboard');
+		}
+	};
+
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
@@ -30,6 +75,53 @@ const popup = (props: Props) => {
 					<DialogTitle>{props.title}</DialogTitle>
 					<DialogDescription>{props.description}</DialogDescription>
 				</DialogHeader>
+				{props.title === 'Email' && (
+					<div className='w-full h-full'>
+						<form onSubmit={handleSubmit}>
+							<Input
+								type='text'
+								variant='underlined'
+								label='Name'
+								name='name'
+								value={data.name}
+								onChange={(e) =>
+									setData({ ...data, name: e.target.value })
+								}
+								className='max-w-xs'
+							/>
+							<Input
+								type='email'
+								variant='underlined'
+								label='Email'
+								name='email'
+								value={data.email}
+								isRequired
+								onChange={(e) => {
+									setData({ ...data, email: e.target.value });
+								}}
+							/>
+							<Input
+								isRequired
+								type='password'
+								variant='underlined'
+								label='Password'
+								name='password'
+								value={data.password}
+								onChange={(e) =>
+									setData({
+										...data,
+										password: e.target.value,
+									})
+								}
+							/>
+							<Button
+								className='w-full rounded-t-none'
+								variant='ghost'>
+								Submit
+							</Button>
+						</form>
+					</div>
+				)}
 			</DialogContent>
 		</Dialog>
 	);

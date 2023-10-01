@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Fragment_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/ui/theme-provider';
+import { Providers } from './providers';
 const fragMono = Fragment_Mono({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export default function RootLayout({
 					attribute='class'
 					defaultTheme='system'
 					enableSystem>
-					{children}
+					<Providers>{children}</Providers>
 				</ThemeProvider>
 			</body>
 		</html>
