@@ -7,7 +7,7 @@ import {
 	CardTitle,
 } from '@/components/ui/card';
 
-import { ModeToggle } from '@/components/layout/darkmode';
+import ModeToggle from '@/components/layout/darkmode';
 
 import Popup from '@/components/layout/popup';
 
