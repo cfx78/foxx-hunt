@@ -1,0 +1,36 @@
+'use client';
+
+import { PiGoogleLogoThin, PiGithubLogoThin } from 'react-icons/pi';
+import { Button } from '../ui/button';
+import { signIn } from 'next-auth/react';
+
+type SignInButtonProps = {
+	Google?: boolean;
+	Github?: boolean;
+};
+
+const SignInButton = (props: SignInButtonProps) => {
+	const handleClick = () => {
+		if (props.Google) {
+			signIn('google', { callbackUrl: '/dashboard' });
+		} else if (props.Github) {
+			signIn('github', { callbackUrl: '/dashboard' });
+		}
+	};
+
+	return (
+		<Button
+			variant={'outline'}
+			onClick={handleClick}
+			className='flex items-center justify-between space-x-1 w-40 focus:bg-white focus:text-black focus:animate-pulse transition-all light:focus:bg-black light:focus:text-white'>
+			{props.Google ? (
+				<PiGoogleLogoThin className='w-6 h-6 cursor-pointer ' />
+			) : (
+				<PiGithubLogoThin className='w-6 h-6 cursor-pointer' />
+			)}
+			{props.Google ? 'Google' : 'Github'}
+		</Button>
+	);
+};
+
+export default SignInButton;

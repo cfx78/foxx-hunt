@@ -1,10 +1,11 @@
 import NextAuth from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { NextAuthOptions } from 'next-auth';
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/lib/db';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import bcrypt from 'bcrypt';
-const prisma = new PrismaClient();
+import GoogleProvider from 'next-auth/providers/google';
+import Github from 'next-auth/providers/github';
 
 export const authOptions: NextAuthOptions = {
 	adapter: PrismaAdapter(prisma),
@@ -17,6 +18,16 @@ export const authOptions: NextAuthOptions = {
 		strategy: 'jwt',
 	},
 	providers: [
+		GoogleProvider({
+			clientId: process.env.GOOGLE_CLIENT as string,
+			clientSecret: process.env.GOOGLE_SECRET as string,
+		}),
+
+		Github({
+			clientId: process.env.GITHUB_CLIENT as string,
+			clientSecret: process.env.GITHUB_SECRET as string,
+		}),
+
 		CredentialsProvider({
 			name: 'credentials',
 			credentials: {
@@ -50,7 +61,7 @@ export const authOptions: NextAuthOptions = {
 
 				const isValid = await bcrypt.compare(
 					credentials.password,
-					user.password,
+					user.password as string,
 				);
 
 				if (!isValid) {

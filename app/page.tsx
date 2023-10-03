@@ -11,17 +11,11 @@ import { ModeToggle } from '@/components/layout/darkmode';
 
 import Popup from '@/components/layout/popup';
 
-import Logout from '@/components/layout/logout';
-
-import {
-	PiGoogleLogoThin,
-	PiGithubLogoThin,
-	PiEnvelopeSimpleThin,
-} from 'react-icons/pi';
+import { PiEnvelopeSimpleThin } from 'react-icons/pi';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]/route';
-import { Button } from '@/components/ui/button';
-import GoogleButton from '@/components/layout/googleButton';
+
+import SignInButton from '@/components/layout/SignInButton';
 
 export default async function Home() {
 	const session = await getServerSession(authOptions);
@@ -29,16 +23,7 @@ export default async function Home() {
 
 	return (
 		<main className='w-screen h-screen flex flex-col items-center justify-center p-4 relative'>
-			{session != null && (
-				<div className='top-32 absolute flex-col text-center justify-center items-center'>
-					<p>
-						{JSON.stringify(session?.user?.name)}
-						{JSON.stringify(session?.user?.email)}
-					</p>
-					<Logout />
-				</div>
-			)}
-			<Card className='absolute border-0 border-y-4 w-96 lg:w-3/5 lg:h-auto lg:py-4'>
+			<Card className='absolute border-0 border-y-4 w-96 lg:w-3/5 lg:h-auto lg:py-4 shadow-2xl'>
 				<div className='flex items-center justify-center w-full pt-4 pb-6'>
 					<ModeToggle />
 				</div>
@@ -55,16 +40,8 @@ export default async function Home() {
 				<CardContent className='text-center'>
 					<p>sign in</p>
 					<div className='flex w-full h-full items-center justify-evenly py-5'>
-						<Popup
-							trigger={<PiGoogleLogoThin className='w-6 h-6' />}
-							title='Google'
-							description='This would be a google sign in'
-						/>
-						<Popup
-							trigger={<PiGithubLogoThin className='w-6 h-6' />}
-							title='Github'
-							description='This would be a github sign in'
-						/>
+						<SignInButton Google />
+						<SignInButton Github />
 						<Popup
 							trigger={
 								<PiEnvelopeSimpleThin className='w-6 h-6' />
@@ -85,12 +62,8 @@ export default async function Home() {
 					</div>
 					<p className='pt-4'>sign up</p>
 					<div className='flex w-full h-full items-center justify-evenly py-5'>
-						<GoogleButton />
-						<Popup
-							trigger={<PiGithubLogoThin className='w-6 h-6' />}
-							title='Github'
-							description='This would be a github sign up'
-						/>
+						<SignInButton Google />
+						<SignInButton Github />
 						<Popup
 							trigger={
 								<PiEnvelopeSimpleThin className='w-6 h-6' />
