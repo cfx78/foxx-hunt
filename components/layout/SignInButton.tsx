@@ -17,12 +17,16 @@ const SignInButton = (props: SignInButtonProps) => {
 			signIn('github', { callbackUrl: '/dashboard' });
 		}
 	};
+	console.log(
+		'🚀 ~ file: SignInButton.tsx:20 ~ handleClick ~ handleClick:',
+		handleClick,
+	);
 
 	return (
 		<Button
 			variant={'outline'}
 			onClick={handleClick}
-			className='flex items-center justify-between space-x-1 w-40 focus:bg-white focus:text-black focus:animate-pulse transition-all light:focus:bg-black light:focus:text-white'>
+			className='flex items-center justify-between w-40 space-x-1 transition-all focus:bg-white focus:text-black focus:animate-pulse light:focus:bg-black light:focus:text-white'>
 			{props.Google ? (
 				<PiGoogleLogoThin className='w-6 h-6 cursor-pointer ' />
 			) : (

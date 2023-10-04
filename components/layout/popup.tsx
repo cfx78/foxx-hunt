@@ -69,7 +69,7 @@ const Popup = (props: Props) => {
 			<DialogTrigger asChild>
 				<Button
 					variant='outline'
-					className='flex justify-between w-40  items-center'>
+					className='flex items-center justify-between w-40'>
 					{props.trigger} <span className='pl-1'>{props.title}</span>
 				</Button>
 			</DialogTrigger>

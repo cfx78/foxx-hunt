@@ -1,3 +1,4 @@
 {
-	"cSpell.words": ["NEXTAUTH", "nextui"]
+	"cSpell.words": ["NEXTAUTH", "nextui"],
+	"editor.acceptSuggestionOnEnter": "on"
 }

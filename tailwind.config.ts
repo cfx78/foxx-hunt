@@ -75,5 +75,10 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [nextui(), require('tailwindcss-animate')],
+	plugins: [
+		nextui(),
+		require('tailwindcss-animate'),
+		require('tailwindcss-brand-colors'),
+		require('tailwindcss-debug-screens'),
+	],
 };

@@ -3,7 +3,7 @@ import { Spinner } from '@nextui-org/react';
 
 const Loading = () => {
 	return (
-		<div className='w-screen h-screen grid place-content-center'>
+		<div className='grid w-screen h-screen place-content-center'>
 			<Spinner label='Loading...' />
 		</div>
 	);

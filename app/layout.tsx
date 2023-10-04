@@ -1,8 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Fragment_Mono } from 'next/font/google';
-import { ThemeProvider } from '@/components/ui/theme-provider';
+
 import { Providers } from './providers';
+import { Fragment_Mono } from 'next/font/google';
+
 const fragMono = Fragment_Mono({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
@@ -17,13 +18,8 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className={fragMono.className}>
-				<ThemeProvider
-					attribute='class'
-					defaultTheme='system'
-					enableSystem>
-					<Providers>{children}</Providers>
-				</ThemeProvider>
+			<body className={`debug-screens ${fragMono.className}`}>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);

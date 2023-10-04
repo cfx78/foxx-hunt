@@ -10,60 +10,46 @@ type SidebarProps = {
 
 const Sidebar = (props: SidebarProps) => {
 	return (
-		<div className='h-screen w-full relative flex-col items-center justify-center'>
-			<div className='h-full w-full  relative'>
-				<span className='text-5xl pl-6  pt-3 text-center absolute'>
-					<h1 className='text-4xl underline underline-offset-2  pl-1 pb-3 text-center'>
-						Foxx Hunt
-					</h1>
-					🦊
-				</span>
-			</div>
-			<nav
-				className='h-[90%] bottom-1 rounded-t-lg  shadow-slate-400 shadow-inner absolute bg-secondary
-				 w-52  self-center flex-col justify-around items-center'>
-				<div className='top-0 pt-6 text-center w-full '>
-					<ModeToggle />
-				</div>
-
-				<div className='flex-col px-2 text-center pt-10 space-y-4 relative  justify-center items-center w-full'>
-					<p className='text-xl'>{props.name}</p>
-					<p className='text-lg text-ellipsis overflow-hidden'>
+		<>
+			<nav className='flex-col top-0 left-0 fixed w-[10vw] border-8 h-full hidden lg:block'>
+				<div className=''>
+					<p className='text-xl text-center'>{props.name}</p>
+					<p className='overflow-hidden text-lg text-ellipsis text-center'>
 						{props.email}
 					</p>
 				</div>
-				<div className='w-full flex justify-center items-center pt-7'>
+				<div className='flex items-center justify-center w-full pt-7'>
 					<ProfileAvatar image={props.image} role={props.role} />
 				</div>
 
-				<ul className='flex-col text-center pt-16 space-y-9  justify-center items-center w-full'>
+				<ul className='flex-col items-center justify-center w-full pt-16 text-center space-y-9'>
 					<li>
 						<a
 							href='/dashboard'
-							className='text-center text-2xl w-full hover:text-primary'>
+							className='w-full text-2xl text-center hover:text-primary'>
 							Dashboard
 						</a>
 					</li>
 					<li>
 						<a
 							href='/dashboard'
-							className='text-center text-2xl w-full hover:text-primary'>
+							className='w-full text-2xl text-center hover:text-primary'>
 							Projects
 						</a>
 					</li>
 					<li>
 						<a
 							href='/dashboard'
-							className='text-center text-2xl w-full hover:text-primary'>
+							className='w-full text-2xl text-center hover:text-primary'>
 							Tickets
 						</a>
 					</li>
 				</ul>
-				<div className='w-full pt-24 flex justify-center items-center'>
+				<div className='flex items-center justify-center w-full pt-24'>
 					<Logout />
 				</div>
 			</nav>
-		</div>
+		</>
 	);
 };
 
