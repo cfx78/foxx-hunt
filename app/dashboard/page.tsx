@@ -22,24 +22,15 @@ const Dashboard = async () => {
 	});
 	console.log(user?.role);
 	return (
-		<>
-			{session != null && (
-				<main className='absolute top-0 flex-col h-full items-center w-full lg:w-[90vw] right-0  mx-auto border-5 border-slate-400 '>
-					<div className='flex justify-center w-full top-0 text-center space-x-9 border border-inherit py-16'>
-						<MobileNav
-							email={user?.email as string}
-							name={user?.name as string}
-							image={user?.image as string}
-							role={user?.role as string}
-						/>
-						<h1 className='text-4xl font-bold'>Dashboard</h1>
-						<span className='self-end'>
-							<ModeToggle />
-						</span>
-					</div>
-				</main>
-			)}
-		</>
+		<h1>
+			<MobileNav
+				name={user?.name as string}
+				email={user?.email as string}
+				image={user?.image as string}
+				role={user?.role as string}
+			/>
+			Hey
+		</h1>
 	);
 };
 
