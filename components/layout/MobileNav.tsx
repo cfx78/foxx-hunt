@@ -5,6 +5,7 @@ import Logout from './logout';
 import ProfileAvatar from './ProfileAvatar';
 import { Button } from '../ui/button';
 import { motion } from 'framer-motion';
+import ModeToggle from './darkmode';
 type SidebarProps = {
 	name: string;
 	email: string;
@@ -17,21 +18,35 @@ const MobileNav = (props: SidebarProps) => {
 
 	return (
 		<div className='top-0 left-0 fixed'>
-			<div className='z-50'>
+			<div>
 				<Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} />
 			</div>
-			<nav
-				className={`${
-					isMenuOpen ? '-translate-x-0 ' : '-translate-x-full'
-				}   text-white bg-black px-24 w-full pb-56 pt-32 ease-in-out  transition h-full rounded duration-1000 top-0 left-0 fixed`}>
+			<motion.nav
+				initial={{ opacity: 0, x: -1000 }}
+				animate={
+					isMenuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -1000 }
+				}
+				transition={{
+					duration: 0.5,
+					ease: 'easeInOut',
+					type: 'tween',
+					stiffness: 10,
+				}}
+				exit={{
+					opacity: 0.75,
+					x: -1000,
+					transition: {
+						duration: 0.5,
+						ease: 'easeInOut',
+						type: 'tween',
+						stiffness: 10,
+					},
+				}}
+				className='bg-accent px-24 w-full pb-56 pt-32 h-full rounded  top-0 left-0 fixed'>
+				<div className='w-full grid place-content-center pr-1 top-0'>
+					<ModeToggle />
+				</div>
 				<div className='text-right justify-end top-0 right-0 absolute'>
-					{/* <Button
-						className='absolute top-0 right-0'
-						variant={'ghost'}
-						size={'lg'}
-						onClick={() => setIsMenuOpen(false)}>
-						X
-					</Button> */}
 					<div className='z-50'>
 						<Hamburger
 							toggled={isMenuOpen}
@@ -43,6 +58,8 @@ const MobileNav = (props: SidebarProps) => {
 				<div className='w-full text-center flex-col justify-evenly items-center mx-auto '>
 					<motion.span
 						className='flex items-center justify-center w-full py-7'
+						viewport={{ once: true }}
+						initial={{ opacity: 0, y: -50 }}
 						animate={
 							isMenuOpen
 								? { opacity: 1, y: 0 }
@@ -53,36 +70,85 @@ const MobileNav = (props: SidebarProps) => {
 							ease: 'easeInOut',
 							type: 'spring',
 							stiffness: 100,
+							delay: 0.5,
 						}}>
 						<ProfileAvatar image={props.image} role={props.role} />
 					</motion.span>
-					<p>{props.name}</p>
-					<p>{props.email}</p>
+					<motion.p
+						viewport={{ once: true }}
+						initial={{ opacity: 0, y: -50 }}
+						animate={
+							isMenuOpen
+								? { opacity: 1, y: 0 }
+								: { opacity: 0, y: -50 }
+						}
+						transition={{
+							duration: 0.75,
+							ease: 'easeInOut',
+							type: 'spring',
+							stiffness: 100,
+							delay: 0.6,
+						}}
+						exit={{ opacity: 0, y: -50 }}>
+						{props.name}
+					</motion.p>
+					<motion.p
+						initial={{ opacity: 0, y: -50 }}
+						animate={
+							isMenuOpen
+								? { opacity: 1, y: 0 }
+								: { opacity: 0, y: -50 }
+						}
+						transition={{
+							duration: 0.75,
+							ease: 'easeInOut',
+							type: 'spring',
+							stiffness: 100,
+							delay: 0.7,
+						}}
+						exit={{ opacity: 0, y: -50 }}>
+						{props.email}
+					</motion.p>
 				</div>
-				<ul className='flex-col items-center justify-center w-full pt-16 text-center space-y-9'>
-					<li>
+				<motion.ul
+					initial={{ opacity: 0 }}
+					animate={isMenuOpen ? { opacity: 1 } : { opacity: 0 }}
+					transition={{
+						duration: 0.75,
+						ease: 'easeInOut',
+						type: 'spring',
+						stiffness: 100,
+						delay: 0.8,
+						delayChildren: 0.75,
+					}}
+					exit={{ opacity: 0 }}
+					className='flex-col items-center justify-center w-full pt-16 text-center space-y-9'>
+					<motion.li>
 						<a
 							href='/dashboard'
 							className='w-full text-2xl text-center hover:text-primary'>
 							Dashboard
 						</a>
-					</li>
-					<li>
+					</motion.li>
+					<motion.li>
 						<a
 							href='/dashboard'
 							className='w-full text-2xl text-center hover:text-primary'>
 							Projects
 						</a>
-					</li>
-					<li>
+					</motion.li>
+					<motion.li>
 						<a
 							href='/dashboard'
 							className='w-full text-2xl text-center hover:text-primary'>
 							Tickets
 						</a>
-					</li>
-				</ul>
-			</nav>
+					</motion.li>
+					<motion.li>
+						<Logout />
+					</motion.li>
+				</motion.ul>
+			</motion.nav>
 		</div>
 	);
 };
