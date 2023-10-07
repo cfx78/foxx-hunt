@@ -19,7 +19,11 @@ const MobileNav = (props: SidebarProps) => {
 	return (
 		<div className='top-0 left-0 fixed'>
 			<div>
-				<Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} />
+				<Hamburger
+					toggled={isMenuOpen}
+					toggle={setIsMenuOpen}
+					rounded
+				/>
 			</div>
 			<motion.nav
 				initial={{ opacity: 0, x: -1000 }}
@@ -27,7 +31,7 @@ const MobileNav = (props: SidebarProps) => {
 					isMenuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -1000 }
 				}
 				transition={{
-					duration: 0.5,
+					duration: 0.35,
 					ease: 'easeInOut',
 					type: 'tween',
 					stiffness: 10,
@@ -36,14 +40,14 @@ const MobileNav = (props: SidebarProps) => {
 					opacity: 0.75,
 					x: -1000,
 					transition: {
-						duration: 0.5,
+						duration: 0.35,
 						ease: 'easeInOut',
 						type: 'tween',
 						stiffness: 10,
 					},
 				}}
 				className='bg-accent px-24 w-full pb-56 pt-32 h-full rounded  top-0 left-0 fixed'>
-				<div className='w-full grid place-content-center pr-1 top-0'>
+				<div className='w-full grid place-content-center  top-0'>
 					<ModeToggle />
 				</div>
 				<div className='text-right justify-end top-0 right-0 absolute'>
@@ -55,7 +59,7 @@ const MobileNav = (props: SidebarProps) => {
 					</div>
 				</div>
 
-				<div className='w-full text-center flex-col justify-evenly items-center mx-auto '>
+				<div className='w-full text-center flex-col md:text-2xl justify-evenly items-center mx-auto '>
 					<motion.span
 						className='flex items-center justify-center w-full py-7'
 						viewport={{ once: true }}
@@ -66,7 +70,7 @@ const MobileNav = (props: SidebarProps) => {
 								: { opacity: 0, y: -50 }
 						}
 						transition={{
-							duration: 0.75,
+							duration: 0.45,
 							ease: 'easeInOut',
 							type: 'spring',
 							stiffness: 100,
@@ -83,7 +87,7 @@ const MobileNav = (props: SidebarProps) => {
 								: { opacity: 0, y: -50 }
 						}
 						transition={{
-							duration: 0.75,
+							duration: 0.55,
 							ease: 'easeInOut',
 							type: 'spring',
 							stiffness: 100,
@@ -100,7 +104,7 @@ const MobileNav = (props: SidebarProps) => {
 								: { opacity: 0, y: -50 }
 						}
 						transition={{
-							duration: 0.75,
+							duration: 0.65,
 							ease: 'easeInOut',
 							type: 'spring',
 							stiffness: 100,
@@ -118,33 +122,70 @@ const MobileNav = (props: SidebarProps) => {
 						ease: 'easeInOut',
 						type: 'spring',
 						stiffness: 100,
-						delay: 0.8,
-						delayChildren: 0.75,
 					}}
 					exit={{ opacity: 0 }}
 					className='flex-col items-center justify-center w-full pt-16 text-center space-y-9'>
-					<motion.li>
+					<motion.li
+						initial={{ opacity: 0, y: 50 }}
+						animate={
+							isMenuOpen
+								? { opacity: 1, y: 0 }
+								: { opacity: 0, y: 50 }
+						}
+						transition={{
+							duration: 0.75,
+							ease: 'easeInOut',
+							type: 'spring',
+							stiffness: 100,
+						}}
+						exit={{ opacity: 0, y: 50 }}>
 						<a
 							href='/dashboard'
-							className='w-full text-2xl text-center hover:text-primary'>
+							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
 							Dashboard
 						</a>
 					</motion.li>
-					<motion.li>
+					<motion.li
+						initial={{ opacity: 0, y: 50 }}
+						animate={
+							isMenuOpen
+								? { opacity: 1, y: 0 }
+								: { opacity: 0, y: 50 }
+						}
+						transition={{
+							duration: 0.75,
+							ease: 'easeInOut',
+							type: 'spring',
+							stiffness: 100,
+						}}
+						exit={{ opacity: 0, y: 50 }}>
 						<a
 							href='/dashboard'
-							className='w-full text-2xl text-center hover:text-primary'>
+							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
 							Projects
 						</a>
 					</motion.li>
-					<motion.li>
+					<motion.li
+						initial={{ opacity: 0, y: 50 }}
+						animate={
+							isMenuOpen
+								? { opacity: 1, y: 0 }
+								: { opacity: 0, y: 50 }
+						}
+						transition={{
+							duration: 0.75,
+							ease: 'easeInOut',
+							type: 'spring',
+							stiffness: 100,
+						}}
+						exit={{ opacity: 0, y: 50 }}>
 						<a
 							href='/dashboard'
-							className='w-full text-2xl text-center hover:text-primary'>
+							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
 							Tickets
 						</a>
 					</motion.li>
-					<motion.li>
+					<motion.li className=''>
 						<Logout />
 					</motion.li>
 				</motion.ul>

@@ -8,6 +8,7 @@ import { authOptions } from '../api/auth/[...nextauth]/route';
 import { redirect } from 'next/navigation';
 import prisma from '@/lib/db';
 import Sidebar from '@/components/layout/Sidebar';
+import MobileNav from '@/components/layout/MobileNav';
 
 const exo2 = Exo_2({ subsets: ['latin'], weight: '400' });
 
@@ -38,8 +39,16 @@ export default async function DashboardLayout({
 		<html lang='en'>
 			<body className={`w-full h-screen ${exo2.className}`}>
 				<Providers>
-					<div className='w-1/4'>
+					<div className='w-1/4 hidden lg:block'>
 						<Sidebar
+							name={user?.name as string}
+							email={user?.email as string}
+							image={user?.image as string}
+							role={user?.role as string}
+						/>
+					</div>
+					<div className='lg:hidden'>
+						<MobileNav
 							name={user?.name as string}
 							email={user?.email as string}
 							image={user?.image as string}

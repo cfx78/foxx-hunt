@@ -22,15 +22,10 @@ const Dashboard = async () => {
 	});
 	console.log(user?.role);
 	return (
-		<h1>
-			<MobileNav
-				name={user?.name as string}
-				email={user?.email as string}
-				image={user?.image as string}
-				role={user?.role as string}
-			/>
+		<>
+
 			Hey
-		</h1>
+		</>
 	);
 };
 
