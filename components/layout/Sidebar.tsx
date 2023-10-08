@@ -58,7 +58,7 @@ const Sidebar = (props: SidebarProps) => {
 				<p
 					className={
 						isMenuOpen
-							? 'block text-center pt-2 delay-700 transition ease-in-out w-full'
+							? 'block text-center pt-2 delay-700 transition ease-in-out w-full truncate '
 							: 'hidden'
 					}>
 					{props.email}
