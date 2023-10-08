@@ -1,50 +1,55 @@
 import prisma from '@/lib/db';
-import {
-	Table,
-	TableBody,
-	TableCaption,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
-} from '@/components/ui/table';
 
 const ProjectsTable = async () => {
 	const projects = await prisma.project.findMany({
 		include: {
 			tickets: true,
 		},
+
+		orderBy: {
+			createdAt: 'desc',
+		},
 	});
 	console.log('projects', projects);
 
 	return (
-		<Table className='w-full h-full'>
-			<TableCaption>Projects</TableCaption>
-			<TableHeader>
-				<TableRow>
-					<TableHead>Name</TableHead>
-					<TableHead>Created</TableHead>
-					<TableHead>Updated</TableHead>
-					<TableHead className='text-right'>Tickets</TableHead>
-				</TableRow>
-			</TableHeader>
-			<TableBody>
-				{projects.map((project) => (
-					<TableRow key={project.id}>
-						<TableCell>{project.name}</TableCell>
-						<TableCell>
-							{project.createdAt.toDateString()}
-						</TableCell>
-						<TableCell>
-							{project.updatedAt.toDateString()}
-						</TableCell>
-						<TableCell className='text-right'>
-							{project.tickets.length}
-						</TableCell>
-					</TableRow>
-				))}
-			</TableBody>
-		</Table>
+		<div className='flex-col justify-center items-center'>
+			<h1 className='text-center text-2xl font-bold my-5'>Projects</h1>
+			<table className='table-auto w-full border-spacing-y-8 border-separate'>
+				<thead>
+					<tr>
+						<th className='text-left underline-offset-2 underline'>
+							Name
+						</th>
+						<th className='text-center underline-offset-2 underline'>
+							Created
+						</th>
+						<th className='text-center underline-offset-2 underline'>
+							Updated
+						</th>
+						<th className='text-right underline-offset-2 underline'>
+							Tickets
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{projects.map((project) => (
+						<tr key={project.id}>
+							<td className='text-left'>{project.name}</td>
+							<td className='text-center'>
+								{project.createdAt.toDateString()}
+							</td>
+							<td className='text-center'>
+								{project.updatedAt.toDateString()}
+							</td>
+							<td className='text-right'>
+								{project.tickets.length}
+							</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
 	);
 };
 
