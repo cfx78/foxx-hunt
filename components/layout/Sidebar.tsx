@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { RxDashboard, RxRulerSquare, RxReader } from 'react-icons/rx';
 import { Tooltip } from '@nextui-org/react';
+import Link from 'next/link';
 
 type SidebarProps = {
 	name: string;
@@ -70,7 +71,7 @@ const Sidebar = (props: SidebarProps) => {
 							content='Dashboard'
 							placement='right'
 							showArrow>
-							<a
+							<Link
 								href='/dashboard'
 								className='w-full text-2xl text-center hover:text-primary'>
 								<RxDashboard
@@ -86,13 +87,13 @@ const Sidebar = (props: SidebarProps) => {
 									}>
 									Dashboard
 								</span>
-							</a>
+							</Link>
 						</Tooltip>
 					</li>
 					<li>
 						<Tooltip content='Projects' placement='right' showArrow>
-							<a
-								href='/dashboard'
+							<Link
+								href='/dashboard/projects'
 								className='w-full text-2xl text-center hover:text-primary'>
 								<RxRulerSquare
 									className='w-full text-center mx-auto text-2xl'
@@ -106,13 +107,13 @@ const Sidebar = (props: SidebarProps) => {
 									}>
 									Projects
 								</span>
-							</a>
+							</Link>
 						</Tooltip>
 					</li>
 					<li>
 						<Tooltip content='Tickets' placement='right' showArrow>
-							<a
-								href='/dashboard'
+							<Link
+								href='/dashboard/tickets'
 								className='w-full text-2xl text-center hover:text-primary'>
 								<RxReader
 									className='w-full text-center mx-auto text-2xl'
@@ -126,7 +127,7 @@ const Sidebar = (props: SidebarProps) => {
 									}>
 									Tickets
 								</span>
-							</a>
+							</Link>
 						</Tooltip>
 					</li>
 				</ul>

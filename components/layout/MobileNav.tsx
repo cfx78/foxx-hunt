@@ -6,6 +6,7 @@ import ProfileAvatar from './ProfileAvatar';
 import { Button } from '../ui/button';
 import { motion } from 'framer-motion';
 import ModeToggle from './darkmode';
+import Link from 'next/link';
 type SidebarProps = {
 	name: string;
 	email: string;
@@ -46,7 +47,7 @@ const MobileNav = (props: SidebarProps) => {
 						stiffness: 10,
 					},
 				}}
-				className='bg-accent px-24 w-full pb-56 pt-32 h-full rounded  top-0 left-0 fixed'>
+				className='bg-accent px-24 w-full pb-56 pt-32 h-full rounded  top-0 left-0 fixed z-[200]'>
 				<div className='w-full grid place-content-center  top-0'>
 					<ModeToggle />
 				</div>
@@ -61,7 +62,7 @@ const MobileNav = (props: SidebarProps) => {
 
 				<div className='w-full text-center flex-col md:text-2xl justify-evenly items-center mx-auto '>
 					<motion.span
-						className='flex items-center justify-center w-full py-7'
+						className='flex z-50 items-center justify-center w-full py-7'
 						viewport={{ once: true }}
 						initial={{ opacity: 0, y: -50 }}
 						animate={
@@ -139,11 +140,11 @@ const MobileNav = (props: SidebarProps) => {
 							stiffness: 100,
 						}}
 						exit={{ opacity: 0, y: 50 }}>
-						<a
+						<Link
 							href='/dashboard'
 							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
 							Dashboard
-						</a>
+						</Link>
 					</motion.li>
 					<motion.li
 						initial={{ opacity: 0, y: 50 }}
@@ -159,11 +160,11 @@ const MobileNav = (props: SidebarProps) => {
 							stiffness: 100,
 						}}
 						exit={{ opacity: 0, y: 50 }}>
-						<a
-							href='/dashboard'
+						<Link
+							href='/dashboard/projects'
 							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
 							Projects
-						</a>
+						</Link>
 					</motion.li>
 					<motion.li
 						initial={{ opacity: 0, y: 50 }}
@@ -179,11 +180,11 @@ const MobileNav = (props: SidebarProps) => {
 							stiffness: 100,
 						}}
 						exit={{ opacity: 0, y: 50 }}>
-						<a
-							href='/dashboard'
+						<Link
+							href='/dashboard/tickets'
 							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
 							Tickets
-						</a>
+						</Link>
 					</motion.li>
 					<motion.li className=''>
 						<Logout />
