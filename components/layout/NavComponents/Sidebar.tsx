@@ -1,9 +1,9 @@
 'use client';
 
 import { Squash as Hamburger } from 'hamburger-react';
-import ModeToggle from './darkmode';
-import Logout from './logout';
-import ProfileAvatar from './ProfileAvatar';
+import ModeToggle from '../darkmode';
+import Logout from '../logout';
+import ProfileAvatar from '../ProfileAvatar';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { RxDashboard, RxRulerSquare, RxReader, RxAvatar } from 'react-icons/rx';

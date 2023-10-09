@@ -1,5 +1,5 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import CreateTicket from '@/components/layout/CreateTicket';
+import CreateTicket from '@/components/layout/TicketComponents/CreateTicket';
 import prisma from '@/lib/db';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';

@@ -1,14 +1,13 @@
 import '../globals.css';
 import type { Metadata } from 'next';
-import { ThemeProvider } from '@/components/ui/theme-provider';
 import { Providers } from '../providers';
 import { Exo_2 } from 'next/font/google';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import { redirect } from 'next/navigation';
 import prisma from '@/lib/db';
-import Sidebar from '@/components/layout/Sidebar';
-import MobileNav from '@/components/layout/MobileNav';
+import Sidebar from '@/components/layout/NavComponents/Sidebar';
+import MobileNav from '@/components/layout/NavComponents/MobileNav';
 
 const exo2 = Exo_2({ subsets: ['latin'], weight: '400' });
 

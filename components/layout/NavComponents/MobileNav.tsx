@@ -1,11 +1,11 @@
 'use client';
 import { Squash as Hamburger } from 'hamburger-react';
 import { useState } from 'react';
-import Logout from './logout';
-import ProfileAvatar from './ProfileAvatar';
+import Logout from '../logout';
+import ProfileAvatar from '../ProfileAvatar';
 
 import { motion } from 'framer-motion';
-import ModeToggle from './darkmode';
+import ModeToggle from '../darkmode';
 import Link from 'next/link';
 type SidebarProps = {
 	name: string;
