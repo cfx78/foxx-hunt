@@ -26,6 +26,15 @@ const ProjectPage = async ({ params: { projectid } }: ProjectPageParams) => {
 
 	console.log(user);
 
+	const projects = await prisma.project.findMany({
+		select: {
+			name: true,
+		},
+	});
+
+	const projectNames = projects?.map((project) => project.name);
+
+	console.log(projects?.map((project) => project.name));
 	const project = await prisma.project.findUnique({
 		where: {
 			id: projectid,
@@ -68,6 +77,7 @@ const ProjectPage = async ({ params: { projectid } }: ProjectPageParams) => {
 			<CreateTicket
 				userID={user?.id as string}
 				projectName={project?.name as string}
+				projects={projectNames as []}
 			/>
 		</div>
 	);
