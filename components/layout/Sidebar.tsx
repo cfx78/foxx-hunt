@@ -6,7 +6,7 @@ import Logout from './logout';
 import ProfileAvatar from './ProfileAvatar';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { RxDashboard, RxRulerSquare, RxReader } from 'react-icons/rx';
+import { RxDashboard, RxRulerSquare, RxReader, RxAvatar } from 'react-icons/rx';
 import { Tooltip } from '@nextui-org/react';
 import Link from 'next/link';
 
@@ -130,6 +130,31 @@ const Sidebar = (props: SidebarProps) => {
 							</Link>
 						</Tooltip>
 					</li>
+					{props.role === 'ADMIN' && (
+						<li>
+							<Tooltip
+								content='Users'
+								placement='right'
+								showArrow>
+								<Link
+									href='/dashboard/users'
+									className='w-full text-2xl text-center hover:text-primary'>
+									<RxAvatar
+										className='w-full text-center mx-auto text-2xl'
+										size={70}
+									/>
+									<span
+										className={
+											isMenuOpen
+												? 'block text-center pt-2'
+												: 'hidden w-0'
+										}>
+										Users
+									</span>
+								</Link>
+							</Tooltip>
+						</li>
+					)}
 				</ul>
 				<div className='flex items-center justify-center w-full pt-24'>
 					<Logout />

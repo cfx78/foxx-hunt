@@ -3,7 +3,7 @@ import { Squash as Hamburger } from 'hamburger-react';
 import { useState } from 'react';
 import Logout from './logout';
 import ProfileAvatar from './ProfileAvatar';
-import { Button } from '../ui/button';
+
 import { motion } from 'framer-motion';
 import ModeToggle from './darkmode';
 import Link from 'next/link';
@@ -186,6 +186,29 @@ const MobileNav = (props: SidebarProps) => {
 							Tickets
 						</Link>
 					</motion.li>
+					{props.role === 'ADMIN' && (
+						<motion.li
+							className=''
+							initial={{ opacity: 0, y: 50 }}
+							animate={
+								isMenuOpen
+									? { opacity: 1, y: 0 }
+									: { opacity: 0, y: 50 }
+							}
+							transition={{
+								duration: 0.75,
+								ease: 'easeInOut',
+								type: 'spring',
+								stiffness: 100,
+							}}
+							exit={{ opacity: 0, y: 50 }}>
+							<Link
+								href='/dashboard/users'
+								className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
+								Users
+							</Link>
+						</motion.li>
+					)}
 					<motion.li className=''>
 						<Logout />
 					</motion.li>

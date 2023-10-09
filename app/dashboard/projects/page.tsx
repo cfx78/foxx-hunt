@@ -13,11 +13,19 @@ const Projects = async () => {
 	}
 
 	const userEmail = session.user?.email;
-	console.log(userEmail);
+
+	const user = await prisma.user.findUnique({
+		where: {
+			email: userEmail as string,
+		},
+	});
+
+	const userRole = user?.role;
+	console.log(userRole);
 
 	return (
-		<div className='w-full min-h-screen py-14 flex-col justify-center items-center px-6'>
-			<CreateProject />
+		<div className='w-full min-h-screen py-24 flex-col justify-center items-center px-6'>
+			{userRole === 'ADMIN' && <CreateProject />}
 			<ProjectsTable />
 		</div>
 	);

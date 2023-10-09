@@ -1,6 +1,5 @@
 'use client';
 
-import { Button, Input } from '@nextui-org/react';
 import { useState } from 'react';
 
 const CreateProject = () => {
@@ -30,7 +29,7 @@ const CreateProject = () => {
 
 	return (
 		<form
-			className='w-full mx-auto text-center border-5 py-5 px-3'
+			className='w-full mx-auto text-center border-5 py-5 px-3 rounded-lg'
 			onSubmit={handleSubmit}>
 			<h1>Create New Project</h1>
 			<input

@@ -1,4 +1,5 @@
 import prisma from '@/lib/db';
+import ProjectsTableRow from './ProjectsTableRow';
 
 const ProjectsTable = async () => {
 	const projects = await prisma.project.findMany({
@@ -13,7 +14,7 @@ const ProjectsTable = async () => {
 	console.log('projects', projects);
 
 	return (
-		<div className='flex-col justify-center items-center'>
+		<div className='flex-col justify-center items-center py-14'>
 			<h1 className='text-center text-2xl font-bold my-5'>Projects</h1>
 			<table className='table-auto w-full border-spacing-y-8 border-separate'>
 				<thead>
@@ -34,18 +35,14 @@ const ProjectsTable = async () => {
 				</thead>
 				<tbody>
 					{projects.map((project) => (
-						<tr key={project.id}>
-							<td className='text-left'>{project.name}</td>
-							<td className='text-center'>
-								{project.createdAt.toDateString()}
-							</td>
-							<td className='text-center'>
-								{project.updatedAt.toDateString()}
-							</td>
-							<td className='text-right'>
-								{project.tickets.length}
-							</td>
-						</tr>
+						<ProjectsTableRow
+							key={project.id}
+							name={project.name}
+							createdAt={project.createdAt}
+							updatedAt={project.updatedAt}
+							tickets={project.tickets as []}
+							id={project.id}
+						/>
 					))}
 				</tbody>
 			</table>
