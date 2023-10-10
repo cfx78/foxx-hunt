@@ -6,18 +6,9 @@ type TicketsTableProps = {
 		priority: string;
 		createdAt: Date;
 	}[];
-	// ticketsArray: [
-	// 	{
-	// 		id: string;
-	// 		title: string;
-	// 		status: string;
-	// 		priority: string;
-	// 		createdAt: Date;
-	// 	},
-	// ];
 };
 
-const TicketsTable = (props: TicketsTableProps) => {
+const ProjectTicketsTable = (props: TicketsTableProps) => {
 	return (
 		<>
 			<table className='table-auto w-full border-spacing-y-8 border-separate'>
@@ -54,4 +45,4 @@ const TicketsTable = (props: TicketsTableProps) => {
 	);
 };
 
-export default TicketsTable;
+export default ProjectTicketsTable;

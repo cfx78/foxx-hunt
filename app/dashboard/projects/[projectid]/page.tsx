@@ -1,6 +1,6 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import CreateTicket from '@/components/layout/TicketComponents/CreateTicket';
-import TicketsTable from '@/components/layout/TicketComponents/TicketsTable';
+import ProjectTicketsTable from '@/components/layout/TicketComponents/ProjectTicketsTable';
 import prisma from '@/lib/db';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
@@ -80,7 +80,7 @@ const ProjectPage = async ({ params: { projectid } }: ProjectPageParams) => {
 			/>
 			<h2 className='py-5 text-2xl'>{project?.name} Tickets</h2>
 
-			<TicketsTable ticketsArray={project?.tickets as []} />
+			<ProjectTicketsTable ticketsArray={project?.tickets as []} />
 		</div>
 	);
 };
