@@ -1,5 +1,6 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import CreateTicket from '@/components/layout/TicketComponents/CreateTicket';
+import TicketsTable from '@/components/layout/TicketComponents/TicketsTable';
 import prisma from '@/lib/db';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
@@ -55,6 +56,11 @@ const ProjectPage = async ({ params: { projectid } }: ProjectPageParams) => {
 					comments: true,
 					project: true,
 					projectName: true,
+					priority: true,
+					type: true,
+				},
+				orderBy: {
+					createdAt: 'asc',
 				},
 			},
 		},
@@ -63,22 +69,18 @@ const ProjectPage = async ({ params: { projectid } }: ProjectPageParams) => {
 	console.log(project);
 
 	return (
-		<div className='w-full h-screen py-24'>
-			<h1>{project?.name}</h1>
-			<p>{project?.createdAt.toDateString()}</p>
-			<p>{project?.updatedAt.toDateString()}</p>
-			{project?.tickets?.map((ticket) => (
-				<div key={ticket.id}>
-					<h1>{ticket.title}</h1>
-					<p>{ticket.createdAt.toDateString()}</p>
-					<p>{ticket.updatedAt.toDateString()}</p>
-				</div>
-			))}
+		<div className='w-full min-h-screen grid place-content-center place-items-center mx-auto py-24 px-4'>
+			<h1 className='text-3xl underline underline-offset-4 pb-6'>
+				{project?.name}
+			</h1>
 			<CreateTicket
 				userID={user?.id as string}
 				projectName={project?.name as string}
 				projects={projectNames as []}
 			/>
+			<h2 className='py-5 text-2xl'>{project?.name} Tickets</h2>
+
+			<TicketsTable ticketsArray={project?.tickets as []} />
 		</div>
 	);
 };

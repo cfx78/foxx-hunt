@@ -22,6 +22,18 @@ enum TicketStatus {
   DONE
 }
 
+enum TicketType {
+  BUG
+  FEATURE
+  TASK
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
 model Comment {
   id                 Int      @id @default(autoincrement())
   name               String
@@ -71,6 +83,9 @@ model Ticket {
   comments        Comment[]
   project         Project      @relation(fields: [projectName], references: [name])
   projectName     String
+  type            TicketType   @default(BUG)
+  priority        TicketPriority @default(MEDIUM)
+
 }
 
 model Account {

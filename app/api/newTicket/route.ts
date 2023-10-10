@@ -12,13 +12,17 @@ export async function POST(request: NextRequest) {
 			' |project: ' +
 			body.data.project,
 		' |body: ' + body.data.body,
+		' |priority: ' + body.data.priority,
+		' |type: ' + body.data.type,
 	);
 
 	if (
 		!body.data.project ||
 		!body.data.title ||
 		!body.data.userID ||
-		!body.data.body
+		!body.data.body ||
+		!body.data.priority ||
+		!body.data.type
 	) {
 		return new NextResponse('Missing project, title, userID, or body', {
 			status: 400,
@@ -35,6 +39,8 @@ export async function POST(request: NextRequest) {
 				connect: { name: body.data.project },
 			},
 			body: body.data.body,
+			priority: body.data.priority,
+			type: body.data.type,
 		},
 	});
 	console.log(ticket);
