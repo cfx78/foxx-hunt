@@ -1,6 +1,7 @@
 import { getServerSession } from 'next-auth';
 import AddComment from './AddComment';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import prisma from '@/lib/db';
 
 type TicketProps = {
 	ticket: TicketInformation;
@@ -10,9 +11,17 @@ const Ticket = async (props: TicketProps) => {
 
 	console.log(session?.user?.email);
 
+	const user = await prisma.user.findUnique({
+		where: {
+			email: session?.user?.email as string,
+		},
+	});
+
+	console.log('user', user?.email);
+
 	return (
-		<div className='w-full bg-slate-300 dark:bg-slate-700 dark:text-slate-200 rounded-lg shadow-2xl p-8 m-4 mx-auto'>
-			<div className='block w-full lg:text-left  text-center font-bold mb-6'>
+		<div className='w-[90vw] lg:w-[25vw] bg-slate-300 dark:bg-slate-700 dark:text-slate-200 rounded-lg shadow-2xl p-10 m-4 mx-auto'>
+			<div className='block w-full lg:text-left lg:gap-8  text-center font-bold mb-6'>
 				<h2 className='text-4xl underline underline-offset-4 dark:decoration-slate-900'>
 					Title
 				</h2>
@@ -91,12 +100,10 @@ const Ticket = async (props: TicketProps) => {
 					</h3>
 					<ul>
 						<li className='text-lg'>
-							Name:{' '}
 							{props.ticket.createdBy.name &&
 								props.ticket.createdBy.name}
 						</li>
 						<li className='text-lg'>
-							Email:{' '}
 							{props.ticket.createdBy.email &&
 								props.ticket.createdBy.email}
 						</li>
@@ -110,12 +117,12 @@ const Ticket = async (props: TicketProps) => {
 						<ul>
 							{props.ticket.assignedTo?.name && (
 								<li className='text-lg'>
-									Name: {props.ticket.assignedTo?.name}
+									{props.ticket.assignedTo?.name}
 								</li>
 							)}
 							{props.ticket.assignedTo?.email && (
 								<li className='text-lg'>
-									Email: {props.ticket.assignedTo?.email}
+									{props.ticket.assignedTo?.email}
 								</li>
 							)}
 						</ul>
@@ -152,21 +159,21 @@ const Ticket = async (props: TicketProps) => {
 				</h3>
 				<div className='w-full flex justify-center items-center flex-col'>
 					<AddComment
-						createdByEmail={session?.user?.email as string}
-						ticketID={props.ticket.id}
+						userEmail={user?.email as string}
+						userName={user?.name as string}
+						ticketId={props.ticket.id}
 					/>
 				</div>
 
 				{props.ticket.comments.map((comment) => (
-					<li key={comment.id}>
+					<li key={comment.body}>
 						<h4 className='text-xl underline underline-offset-4 dark:decoration-slate-900'>
 							{' '}
 							{comment.body}
 						</h4>
 						<h4 className='text-xl underline underline-offset-4 dark:decoration-slate-900'>
-							{comment.createdBy.name &&
-								comment.createdBy.name + '-'}
-							{comment.createdByUserEmail}
+							{comment.userName && comment.userEmail + '-'}
+							{comment.userEmail}
 						</h4>
 						<h4 className='text-xl underline underline-offset-4 dark:decoration-slate-900'>
 							{comment.createdAt.toDateString()}

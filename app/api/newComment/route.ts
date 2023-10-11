@@ -6,17 +6,18 @@ export async function POST(request: NextRequest) {
 	console.log(body.comment);
 
 	console.log(
-		'|ticketID: ' +
-			body.comment.ticketId +
+		'|userName: ' +
+			body.comment.userName +
 			' |userEmail: ' +
-			body.comment.createdBy +
+			body.comment.userEmail +
 			' |body: ' +
 			body.comment.body,
+		' |ticketId: ' + body.comment.ticketId,
 	);
 
 	if (
-		!body.comment.ticketID ||
-		!body.comment.createdBy ||
+		!body.comment.userName ||
+		!body.comment.userEmail ||
 		!body.comment.body
 	) {
 		return new NextResponse('Missing ticketID, createdByEmail, or body', {
@@ -24,21 +25,35 @@ export async function POST(request: NextRequest) {
 		});
 	}
 
-	const comment = await prisma.comment.create({
+	const comment = await prisma.ticket.update({
+		where: { id: body.comment.ticketId },
+
 		data: {
-			body: body.comment.body,
-			ticket: {
-				connect: {
-					id: body.comment.ticketId,
-				},
-			},
-			createdBy: {
-				connect: {
-					email: 'cortez.foxx@gmail.com',
+			comments: {
+				push: {
+					body: body.comment.body,
+					userName: body.comment.userName,
+					userEmail: body.comment.userEmail,
 				},
 			},
 		},
 	});
+
+	// const comment = await prisma.comment.create({
+	// 	data: {
+	// 		body: body.comment.body,
+	// 		ticket: {
+	// 			connect: {
+	// 				id: body.comment.ticketId,
+	// 			},
+	// 		},
+	// 		createdBy: {
+	// 			connect: {
+	// 				email: 'cortez.foxx@gmail.com',
+	// 			},
+	// 		},
+	// 	},
+	// });
 	prisma.$disconnect();
 	console.log('comment: ' + comment);
 	return NextResponse.json(comment);

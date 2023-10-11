@@ -6,9 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("POSTGRES_PRISMA_URL")
-  directUrl = env("POSTGRES_URL_NON_POOLING")
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 enum Role {
@@ -34,18 +33,16 @@ enum TicketPriority {
   HIGH
 }
 
-model Comment {
-  id                 Int      @id @default(autoincrement())
-  body               String
-  createdAt          DateTime @default(now())
-  createdBy          User     @relation(fields: [createdByUserEmail], references: [email])
-  createdByUserEmail String
-  ticket             Ticket   @relation(fields: [ticketId], references: [id])
-  ticketId           String
+type Comment {
+  body      String
+  createdAt DateTime @default(now())
+  userName String
+  userEmail String
+
 }
 
 model User {
-  id              String    @id @default(cuid())
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
   email           String    @unique
   name            String?
   password        String?
@@ -61,7 +58,7 @@ model User {
 }
 
 model Project {
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -69,36 +66,35 @@ model Project {
 }
 
 model Ticket {
-  id              String       @id @default(cuid())
+  id              String         @id @default(auto()) @map("_id") @db.ObjectId
   title           String
   body            String
-  status          TicketStatus @default(OPEN)
-  createdAt       DateTime     @default(now())
-  updatedAt       DateTime     @updatedAt
-  createdBy       User         @relation(name: "createdBy", fields: [createdByUserId], references: [id])
-  createdByUserId String
-  assignedTo      User?        @relation(name: "assignedTo", fields: [assignedToId], references: [id])
-  assignedToId    String?
+  status          TicketStatus   @default(OPEN)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  createdBy       User           @relation(name: "createdBy", fields: [createdByUserId], references: [id])
+  createdByUserId String         @db.ObjectId
+  assignedTo      User?          @relation(name: "assignedTo", fields: [assignedToId], references: [id])
+  assignedToId    String?        @db.ObjectId
   comments        Comment[]
-  project         Project      @relation(fields: [projectName], references: [name])
+  project         Project        @relation(fields: [projectName], references: [name])
   projectName     String
-  type            TicketType   @default(BUG)
+  type            TicketType     @default(BUG)
   priority        TicketPriority @default(MEDIUM)
-
 }
 
 model Account {
-  id                String  @id @default(cuid())
-  userId            String
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String? @db.String
+  access_token      String? @db.String
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String? @db.String
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

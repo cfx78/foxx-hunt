@@ -17,32 +17,9 @@ const TicketPage = async ({ params: { ticketid } }: TicketPageParams) => {
 			id: ticketid,
 		},
 		include: {
-			comments: {
-				select: {
-					id: true,
-					body: true,
-					createdAt: true,
-					createdBy: true,
-					createdByUserEmail: true,
-				},
-			},
-			assignedTo: {
-				select: {
-					name: true,
-					email: true,
-				},
-			},
-			createdBy: {
-				select: {
-					name: true,
-					email: true,
-				},
-			},
-			project: {
-				select: {
-					name: true,
-				},
-			},
+			createdBy: true,
+			assignedTo: true,
+			project: true,
 		},
 	});
 
@@ -50,7 +27,7 @@ const TicketPage = async ({ params: { ticketid } }: TicketPageParams) => {
 		return <h1>Ticket Not Found</h1>;
 	}
 
-	console.log(ticket?.comments);
+	console.log(`ticket: ${ticket.createdBy.name}`);
 
 	const ticketInformation = {
 		id: ticket.id,
@@ -71,19 +48,15 @@ const TicketPage = async ({ params: { ticketid } }: TicketPageParams) => {
 		},
 		project: { name: ticket.project?.name },
 		comments: ticket.comments.map((comment) => ({
-			id: comment.id,
 			body: comment.body,
 			createdAt: comment.createdAt,
-			createdBy: {
-				name: comment.createdBy.name,
-				email: comment.createdBy.email,
-			},
-			createdByUserEmail: comment.createdByUserEmail,
+			userName: comment.userName,
+			userEmail: comment.userEmail,
 		})),
 	};
 
 	return (
-		<div className='w-full min-h-screen grid place-content-center place-items-center mx-auto py-24 px-4'>
+		<div className='w-full min-h-screen grid place-content-center place-items-center mx-auto py-24 '>
 			<Ticket ticket={ticketInformation} />
 			<h1>Ticket Name: {ticket?.title}</h1>
 			<h2>Ticket Status: {ticket?.status}</h2>
@@ -97,19 +70,19 @@ const TicketPage = async ({ params: { ticketid } }: TicketPageParams) => {
 			<h2>Ticket Updated At: {ticket?.updatedAt.toDateString()}</h2>
 			<h2>Ticket Comments:</h2>
 			<ul>
-				{ticket?.comments.map((comment) => (
+				{/* {ticket?.comments.map((comment) => (
 					<li key={comment.id}>
 						<h3>Comment Body: {comment.body}</h3>
 						<h3>
 							Comment Created By: {comment.createdBy.name}-
-							{comment.createdByUserEmail}
+							{comment.createdById}
 						</h3>
 						<h3>
 							Comment Created At:{' '}
 							{comment.createdAt.toDateString()}
 						</h3>
 					</li>
-				))}
+				))} */}
 			</ul>
 		</div>
 	);

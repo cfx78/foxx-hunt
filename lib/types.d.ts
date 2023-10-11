@@ -22,14 +22,9 @@ type TicketInformation = {
 		name: string;
 	};
 	comments: {
-		id: number;
 		body: string;
+		userName: string;
+		userEmail: string;
 		createdAt: Date;
-		createdBy: {
-			name: string | null;
-			email: string;
-		};
-
-		createdByUserEmail: string;
 	}[];
 };

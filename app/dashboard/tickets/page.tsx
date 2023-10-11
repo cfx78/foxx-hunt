@@ -12,30 +12,13 @@ const TicketsPage = async () => {
 		where: {
 			email: userEmail as string,
 		},
-		include: {
-			ticketsAssigned: {
-				select: {
-					id: true,
-					title: true,
-					status: true,
-					assignedTo: true,
-					assignedToId: true,
-					createdAt: true,
-					updatedAt: true,
-					createdBy: true,
-					createdByUserId: true,
-					body: true,
-					comments: true,
-					project: true,
-					projectName: true,
-					priority: true,
-					type: true,
-				},
-			},
-		},
 	});
 
-	const userTickets = user?.ticketsAssigned;
+	const userTickets = await prisma.ticket.findMany({
+		where: {
+			createdByUserId: user?.id,
+		},
+	});
 
 	return (
 		<div className='w-full min-h-screen py-24 flex-col justify-center items-center px-6'>
