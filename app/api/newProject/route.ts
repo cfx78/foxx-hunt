@@ -23,6 +23,7 @@ export async function POST(request: NextRequest) {
 			name,
 		},
 	});
+	prisma.$disconnect();
 	console.log(project);
 	return NextResponse.json(project);
 }

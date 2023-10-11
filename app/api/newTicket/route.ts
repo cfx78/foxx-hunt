@@ -43,6 +43,8 @@ export async function POST(request: NextRequest) {
 			type: body.data.type,
 		},
 	});
+
+	prisma.$disconnect();
 	console.log(ticket);
 	return NextResponse.json(ticket);
 }

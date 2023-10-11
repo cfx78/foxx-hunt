@@ -29,6 +29,7 @@ export async function POST(request: NextRequest) {
 			password: hashedPassword,
 		},
 	});
+	prisma.$disconnect();
 	console.log(user);
 	return NextResponse.json(user);
 }
