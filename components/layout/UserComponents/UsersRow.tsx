@@ -1,34 +1,32 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
-type ProjectRowProps = {
+type UsersRowProps = {
 	name: string;
-	createdAt: Date;
-	updatedAt: Date;
-	tickets: [];
-	id: string;
+	email: string;
+	tickets: string;
+	projects: string;
+	userId: string;
 };
 
-const ProjectsTableRow = (props: ProjectRowProps) => {
+const UsersRow = (props: UsersRowProps) => {
 	const [isOpen, setIsOpen] = useState(false);
+	console.log(`userId in UsersRow: ${props.userId}`);
 
 	return (
 		<>
-			<tr key={props.id} onClick={() => setIsOpen(!isOpen)}>
+			<tr key={props.userId} onClick={() => setIsOpen(!isOpen)}>
 				<td className='text-left'>{props.name}</td>
-				<td className='text-center '>
-					{props.createdAt.toDateString()}
-				</td>
-				<td className='text-center hidden md:block'>
-					{props.updatedAt.toDateString()}
-				</td>
-				<td className='text-right'>{props.tickets.length}</td>
+				<td className='text-center '>{props.email}</td>
+				<td className='text-center'>{props.tickets}</td>
+				<td className='text-right'>{props.projects}</td>
 			</tr>
 			{isOpen && (
 				<motion.tr
+					key={props.userId}
 					initial={{ opacity: 0, y: -10 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{
@@ -50,8 +48,8 @@ const ProjectsTableRow = (props: ProjectRowProps) => {
 					<th colSpan={4}>
 						<Link
 							className='w-full text-center py-2 px-4 border-2 rounded-lg bg-accent text-white '
-							href={`/dashboard/projects/${props.id}`}>
-							Go to Project
+							href={`/dashboard/users/${props.userId}`}>
+							Go to User
 						</Link>
 					</th>
 				</motion.tr>
@@ -60,4 +58,4 @@ const ProjectsTableRow = (props: ProjectRowProps) => {
 	);
 };
 
-export default ProjectsTableRow;
+export default UsersRow;

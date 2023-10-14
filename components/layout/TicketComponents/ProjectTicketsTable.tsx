@@ -17,13 +17,13 @@ const ProjectTicketsTable = (props: TicketsTableProps) => {
 						<th className='text-left underline-offset-2 underline'>
 							Title
 						</th>
-						<th className=' underline-offset-2 underline'>
+						<th className=' text-center underline-offset-2 underline'>
 							Status
 						</th>
-						<th className='underline-offset-2 underline'>
+						<th className='underline-offset-2 underline text-center'>
 							Priority
 						</th>
-						<th className='text-right underline-offset-2 underline'>
+						<th className='text-center underline-offset-2 underline'>
 							Created
 						</th>
 					</tr>
@@ -32,9 +32,9 @@ const ProjectTicketsTable = (props: TicketsTableProps) => {
 					{props.ticketsArray.map((ticket) => (
 						<tr key={ticket.id}>
 							<td className='text-left'>{ticket.title}</td>
-							<td>{ticket.status}</td>
-							<td>{ticket.priority}</td>
-							<td className='text-right'>
+							<td className='text-center'>{ticket.status}</td>
+							<td className='text-center'>{ticket.priority}</td>
+							<td className='text-center'>
 								{ticket.createdAt.toDateString()}
 							</td>
 						</tr>

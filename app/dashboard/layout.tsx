@@ -55,7 +55,9 @@ export default async function DashboardLayout({
 						/>
 					</div>
 
-					<div className='lg:w-3/4 mx-auto '>{children}</div>
+					<div className='lg:w-3/4 mx-auto min-h-screen '>
+						{children}
+					</div>
 				</Providers>
 			</body>
 		</html>

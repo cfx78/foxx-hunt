@@ -36,9 +36,8 @@ enum TicketPriority {
 type Comment {
   body      String
   createdAt DateTime @default(now())
-  userName String
+  userName  String
   userEmail String
-
 }
 
 model User {
@@ -55,6 +54,8 @@ model User {
   ticketsAssigned Ticket[]  @relation(name: "assignedTo")
   comments        Comment[]
   accounts        Account[]
+  projects        Project[] @relation(fields: [projectIds], references: [id])
+  projectIds      String[]  @db.ObjectId
 }
 
 model Project {
@@ -63,6 +64,8 @@ model Project {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   tickets   Ticket[]
+  users     User[]   @relation(fields: [userIds], references: [id])
+  userIds   String[] @db.ObjectId
 }
 
 model Ticket {

@@ -2,6 +2,7 @@ import { getServerSession } from 'next-auth';
 import AddComment from './AddComment';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import prisma from '@/lib/db';
+import CommentSection from './CommentSection';
 
 type TicketProps = {
 	ticket: TicketInformation;
@@ -166,19 +167,15 @@ const Ticket = async (props: TicketProps) => {
 				</div>
 
 				{props.ticket.comments.map((comment) => (
-					<li key={comment.body}>
-						<h4 className='text-xl underline underline-offset-4 dark:decoration-slate-900'>
-							{' '}
-							{comment.body}
-						</h4>
-						<h4 className='text-xl underline underline-offset-4 dark:decoration-slate-900'>
-							{comment.userName && comment.userEmail + '-'}
-							{comment.userEmail}
-						</h4>
-						<h4 className='text-xl underline underline-offset-4 dark:decoration-slate-900'>
-							{comment.createdAt.toDateString()}
-						</h4>
-					</li>
+					<>
+						<CommentSection
+							key={comment.body}
+							name={comment.userName}
+							email={comment.userEmail}
+							date={comment.createdAt}
+							comment={comment.body}
+						/>
+					</>
 				))}
 			</div>
 		</div>

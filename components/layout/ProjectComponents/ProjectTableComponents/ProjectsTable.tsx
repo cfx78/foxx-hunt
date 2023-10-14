@@ -25,7 +25,7 @@ const ProjectsTable = async () => {
 						<th className='text-center underline-offset-2 underline'>
 							Created
 						</th>
-						<th className='text-center underline-offset-2 underline'>
+						<th className='text-center underline-offset-2 underline hidden md:block'>
 							Updated
 						</th>
 						<th className='text-right underline-offset-2 underline'>

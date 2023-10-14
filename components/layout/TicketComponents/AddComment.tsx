@@ -51,69 +51,69 @@ const AddComment = (props: Props) => {
 	};
 
 	return (
-		// <Dialog>
-		// 	<DialogTrigger asChild>
-		// 		<Button
-		// 			variant='outline'
-		// 			className='flex items-center justify-between w-40 mt-2'>
-		// 			<span className='text-center w-full'>Add Comment</span>
-		// 		</Button>
-		// 	</DialogTrigger>
-		// 	<DialogContent>
-		// 		<DialogHeader>
-		// 			<DialogTitle>Comment</DialogTitle>
-		// 			<DialogDescription>
-		// 				Leave a message for any updates or suggestions for
-		// 				ticket
-		// 			</DialogDescription>
-		// 		</DialogHeader>
-
-		// 		<div className='w-full h-full'>
-		// 			<form onSubmit={handleSubmit}>
-		// 				<Textarea
-		// 					type='textarea'
-		// 					variant='underlined'
-		// 					label='Comment'
-		// 					name='name'
-		// 					value={comment.body}
-		// 					onChange={(e) =>
-		// 						setComment({ ...comment, body: e.target.value })
-		// 					}
-		// 					className='max-w-xs'
-		// 				/>
-
-		// 				<Button
-		// 					className='w-full rounded-t-none'
-		// 					type='submit'
-		// 					variant='ghost'>
-		// 					Submit
-		// 				</Button>
-		// 			</form>
-		// 		</div>
-		// 	</DialogContent>
-		// </Dialog>
-		<>
-			<form onSubmit={handleSubmit}>
-				<Textarea
-					type='textarea'
-					variant='underlined'
-					label='Comment'
-					name='name'
-					value={comment.body}
-					onChange={(e) =>
-						setComment({ ...comment, body: e.target.value })
-					}
-					className='max-w-xs'
-				/>
-
+		<Dialog>
+			<DialogTrigger asChild>
 				<Button
-					className='w-full rounded-t-none'
-					type='submit'
-					variant='ghost'>
-					Submit
+					variant='outline'
+					className='flex items-center justify-between w-40 mt-2'>
+					<span className='text-center w-full'>Add Comment</span>
 				</Button>
-			</form>
-		</>
+			</DialogTrigger>
+			<DialogContent>
+				<DialogHeader>
+					<DialogTitle>Comment</DialogTitle>
+					<DialogDescription>
+						Leave a message for any updates or suggestions for
+						ticket
+					</DialogDescription>
+				</DialogHeader>
+
+				<div className='w-full h-full'>
+					<form onSubmit={handleSubmit}>
+						<Textarea
+							type='textarea'
+							variant='underlined'
+							label='Comment'
+							name='name'
+							value={comment.body}
+							onChange={(e) =>
+								setComment({ ...comment, body: e.target.value })
+							}
+							className='max-w-xs'
+						/>
+
+						<Button
+							className='w-full rounded-t-none'
+							type='submit'
+							variant='ghost'>
+							Submit
+						</Button>
+					</form>
+				</div>
+			</DialogContent>
+		</Dialog>
+		// <>
+		// 	<form onSubmit={handleSubmit}>
+		// 		<Textarea
+		// 			type='textarea'
+		// 			variant='underlined'
+		// 			label='Comment'
+		// 			name='name'
+		// 			value={comment.body}
+		// 			onChange={(e) =>
+		// 				setComment({ ...comment, body: e.target.value })
+		// 			}
+		// 			className='max-w-xs'
+		// 		/>
+
+		// 		<Button
+		// 			className='w-full rounded-t-none'
+		// 			type='submit'
+		// 			variant='ghost'>
+		// 			Submit
+		// 		</Button>
+		// 	</form>
+		// </>
 	);
 };
 
