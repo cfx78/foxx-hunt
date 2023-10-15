@@ -2,6 +2,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import { redirect } from 'next/navigation';
 import prisma from '@/lib/db';
+import DashboardBarGraph from '@/components/layout/Charts/DashboardBarGraph';
 
 const Dashboard = async () => {
 	const session = await getServerSession(authOptions);
@@ -19,7 +20,30 @@ const Dashboard = async () => {
 		},
 	});
 	console.log(user?.role);
-	return <>Hey</>;
+
+	const projects = await prisma.project.findMany({
+		include: { tickets: true },
+	});
+	const BarGraphData = projects.map((project) => {
+		return {
+			name: project.name,
+			LOW: project.tickets.filter((ticket) => ticket.priority === 'LOW')
+				.length,
+			MEDIUM: project.tickets.filter(
+				(ticket) => ticket.priority === 'MEDIUM',
+			).length,
+			HIGH: project.tickets.filter((ticket) => ticket.priority === 'HIGH')
+				.length,
+		};
+	});
+
+	console.log(BarGraphData);
+
+	return (
+		<div className='w-full h-full top-0 right-0 fixed py-24 px-4 flex justify-center items-center'>
+			<DashboardBarGraph data={BarGraphData} />
+		</div>
+	);
 };
 
 export default Dashboard;

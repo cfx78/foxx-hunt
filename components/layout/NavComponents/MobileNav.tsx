@@ -18,7 +18,7 @@ const MobileNav = (props: SidebarProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	return (
-		<div className='top-0 left-0 fixed'>
+		<div className='top-0 left-0 fixed z-50'>
 			<div>
 				<Hamburger
 					toggled={isMenuOpen}
@@ -141,6 +141,7 @@ const MobileNav = (props: SidebarProps) => {
 						}}
 						exit={{ opacity: 0, y: 50 }}>
 						<Link
+							onClick={() => setIsMenuOpen(false)}
 							href='/dashboard'
 							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
 							Dashboard
@@ -161,6 +162,7 @@ const MobileNav = (props: SidebarProps) => {
 						}}
 						exit={{ opacity: 0, y: 50 }}>
 						<Link
+							onClick={() => setIsMenuOpen(false)}
 							href='/dashboard/projects'
 							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
 							Projects
@@ -181,6 +183,7 @@ const MobileNav = (props: SidebarProps) => {
 						}}
 						exit={{ opacity: 0, y: 50 }}>
 						<Link
+							onClick={() => setIsMenuOpen(false)}
 							href='/dashboard/tickets'
 							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
 							Tickets
@@ -203,6 +206,7 @@ const MobileNav = (props: SidebarProps) => {
 							}}
 							exit={{ opacity: 0, y: 50 }}>
 							<Link
+								onClick={() => setIsMenuOpen(false)}
 								href='/dashboard/users'
 								className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
 								Users

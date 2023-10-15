@@ -32,7 +32,7 @@ const Sidebar = (props: SidebarProps) => {
 						  }
 						: { width: '10vw' }
 				}
-				className='flex-col top-0 left-0 fixed w-[10vw] border-8 h-full'>
+				className='flex-col top-0 left-0 fixed w-[10vw] border-8 h-full z-50'>
 				<div className='w-full flex justify-center items-center'>
 					<Hamburger
 						toggled={isMenuOpen}
