@@ -3,7 +3,6 @@
 import {
 	BarChart,
 	Bar,
-	Cell,
 	XAxis,
 	YAxis,
 	CartesianGrid,
@@ -24,17 +23,11 @@ type DashboardBarGraphProps = {
 const DashboardBarGraph = (props: DashboardBarGraphProps) => {
 	return (
 		<>
-			<ResponsiveContainer width='80%' height='100%'>
-				<BarChart
-					width={700}
-					height={500}
-					data={props.data}
-					margin={{
-						top: 5,
-						right: 30,
-						left: 20,
-						bottom: 5,
-					}}>
+			<ResponsiveContainer
+				width='80%'
+				height='40%'
+				className='mx-auto max-w-6xl  hidden lg:block '>
+				<BarChart width={1000} height={1000} data={props.data}>
 					<CartesianGrid strokeDasharray='3 3' />
 					<XAxis dataKey='name' />
 					<YAxis />

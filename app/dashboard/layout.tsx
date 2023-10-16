@@ -36,9 +36,9 @@ export default async function DashboardLayout({
 	});
 	return (
 		<html lang='en'>
-			<body className={`w-full h-max ${exo2.className}`}>
+			<body className={`h-full w-full ${exo2.className}`}>
 				<Providers>
-					<div className='w-1/4 hidden lg:block '>
+					<div className=' hidden lg:block '>
 						<Sidebar
 							name={user?.name as string}
 							email={user?.email as string}
@@ -55,9 +55,7 @@ export default async function DashboardLayout({
 						/>
 					</div>
 
-					<div className='lg:w-3/4 mx-auto min-h-screen '>
-						{children}
-					</div>
+					<div className=' min-h-screen '>{children}</div>
 				</Providers>
 			</body>
 		</html>
