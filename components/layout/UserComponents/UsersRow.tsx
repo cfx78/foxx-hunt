@@ -20,7 +20,9 @@ const UsersRow = (props: UsersRowProps) => {
 		<>
 			<tr key={props.userId} onClick={() => setIsOpen(!isOpen)}>
 				<td className='text-left'>{props.name}</td>
-				<td className='text-center '>{props.email}</td>
+				<td className='max-w-[5rem] lg:max-w-full text-center truncate'>
+					{props.email}
+				</td>
 				<td className='text-center'>{props.tickets}</td>
 				<td className='text-right'>{props.projects}</td>
 			</tr>
@@ -47,7 +49,7 @@ const UsersRow = (props: UsersRowProps) => {
 					}}>
 					<th colSpan={4}>
 						<Link
-							className='w-full text-center py-2 px-4 border-2 rounded-lg bg-accent text-white '
+							className='w-full px-4 py-2 text-center text-white border-2 rounded-lg bg-accent '
 							href={`/dashboard/users/${props.userId}`}>
 							Go to User
 						</Link>

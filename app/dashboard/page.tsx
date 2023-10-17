@@ -98,20 +98,22 @@ const Dashboard = async () => {
 	return (
 		<div className='lg:max-w-[94.58vw] lg:mx-auto w-full max-w-screen  h-full lg:h-screen lg:top-0 lg:right-0 lg:fixed lg:py-24 lg:px-4 '>
 			<Header pageTitle='Dashboard' />
-			<div className='w-full h-full flex-col hidden lg:flex -mt-32 mb-[-38rem]   justify-center items-center gap-2'>
-				<h1 className='text-2xl'>Project Tickets</h1>
+			<div className='w-full h-full flex-col hidden md:flex lg:-mt-32 lg:mb-[-38rem] py-44 px-4 lg:py-0 lg:px-0  justify-center items-center gap-2'>
+				<h1 className='w-full pl-6 text-2xl text-center'>
+					Project Tickets
+				</h1>
 				<DashboardBarGraph data={BarGraphData} />
 			</div>
-			<div className='w-full h-full flex-col lg:flex-row  lg:flex justify-evenly items-center'>
-				<div className='w-full flex justify-center items-center flex-col'>
+			<div className='flex-col items-center w-full h-full lg:flex-row lg:flex justify-evenly py-28 '>
+				<div className='flex flex-col items-center justify-center w-full'>
 					<h1 className='text-xl text-center'>Tickets by Type</h1>
 					<TicketsPieChart data={TicketTypeData} />
 				</div>
-				<div className='w-full flex justify-center items-center flex-col'>
+				<div className='flex flex-col items-center justify-center w-full py-60 lg:py-0'>
 					<h1 className='text-xl text-center'>Tickets by Status</h1>
 					<TicketsPieChart data={TicketStatusData} />
 				</div>
-				<div className='w-full flex justify-center items-center flex-col'>
+				<div className='flex flex-col items-center justify-center w-full'>
 					<h1 className='text-xl text-center'>Tickets by Priority</h1>
 					<TicketsPieChart data={TicketPriorityData} />
 				</div>

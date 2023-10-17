@@ -29,7 +29,7 @@ const CreateProject = () => {
 
 	return (
 		<form
-			className='w-full mx-auto text-center border-5 py-5 px-3 rounded-lg'
+			className='w-full max-w-4xl mx-auto text-center border-5 py-5 px-3 rounded-lg'
 			onSubmit={handleSubmit}>
 			<h1>Create New Project</h1>
 			<input

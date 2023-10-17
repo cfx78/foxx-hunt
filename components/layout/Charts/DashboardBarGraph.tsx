@@ -24,9 +24,9 @@ const DashboardBarGraph = (props: DashboardBarGraphProps) => {
 	return (
 		<>
 			<ResponsiveContainer
-				width='80%'
-				height='40%'
-				className='mx-auto max-w-6xl  hidden lg:block '>
+				width='90%'
+				height='50%'
+				className='hidden max-w-6xl mx-auto md:block '>
 				<BarChart width={1000} height={1000} data={props.data}>
 					<CartesianGrid strokeDasharray='3 3' />
 					<XAxis dataKey='name' />

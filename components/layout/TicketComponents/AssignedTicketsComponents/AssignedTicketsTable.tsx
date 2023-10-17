@@ -26,10 +26,10 @@ const AssignedTicketsTable = (props: AssignedTicketsTableProps) => {
 						<th className='text-left underline-offset-2 underline'>
 							Title
 						</th>
-						<th className=' underline-offset-2 underline'>
+						<th className=' underline-offset-2 underline text-center'>
 							Status
 						</th>
-						<th className='underline-offset-2 underline'>
+						<th className='underline-offset-2 underline text-center'>
 							Priority
 						</th>
 						<th className='text-right underline-offset-2 underline'>

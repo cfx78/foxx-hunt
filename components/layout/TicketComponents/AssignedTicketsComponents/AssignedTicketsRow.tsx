@@ -17,8 +17,8 @@ const AssignedTicketsRow = (props: AssignedTicketsRowProps) => {
 		<>
 			<tr key={props.id} onClick={() => setIsOpen(!isOpen)}>
 				<td className='text-left'>{props.title}</td>
-				<td>{props.status}</td>
-				<td>{props.priority}</td>
+				<td className='text-center'>{props.status}</td>
+				<td className='text-center'>{props.priority}</td>
 				<td className='text-right'>{props.createdAt.toDateString()}</td>
 			</tr>
 			{isOpen && (

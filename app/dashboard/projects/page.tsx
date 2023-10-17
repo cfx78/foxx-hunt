@@ -4,6 +4,7 @@ import prisma from '@/lib/db';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import CreateProject from '@/components/layout/ProjectComponents/CreateProject';
 import ProjectsTable from '@/components/layout/ProjectComponents/ProjectTableComponents/ProjectsTable';
+import Header from '@/components/layout/Header';
 
 const Projects = async () => {
 	const session = await getServerSession(authOptions);
@@ -24,9 +25,12 @@ const Projects = async () => {
 	console.log(userRole);
 
 	return (
-		<div className='w-full min-h-screen py-24 flex-col justify-center items-center px-6'>
-			{userRole === 'ADMIN' && <CreateProject />}
-			<ProjectsTable />
+		<div className='lg:max-w-[94.58vw] lg:mx-auto w-full max-w-screen  h-full lg:h-screen lg:top-0 lg:right-0 lg:fixed lg:py-24 lg:px-4'>
+			<Header pageTitle='Projects' />
+			<div className='flex flex-col justify-center w-full h-full px-4 pt-56 mt-16 lg:pt-0 '>
+				{userRole === 'ADMIN' && <CreateProject />}
+				<ProjectsTable />
+			</div>
 		</div>
 	);
 };
