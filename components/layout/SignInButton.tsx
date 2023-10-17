@@ -17,10 +17,6 @@ const SignInButton = (props: SignInButtonProps) => {
 			signIn('github', { callbackUrl: '/dashboard' });
 		}
 	};
-	console.log(
-		'🚀 ~ file: SignInButton.tsx:20 ~ handleClick ~ handleClick:',
-		handleClick,
-	);
 
 	return (
 		<Button

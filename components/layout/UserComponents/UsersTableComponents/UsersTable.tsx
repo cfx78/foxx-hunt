@@ -8,7 +8,6 @@ const UsersTable = async () => {
 			ticketsAssigned: true,
 		},
 	});
-	console.log(`userID in UsersTable: ${users[0].id}`);
 
 	return (
 		<>
@@ -38,6 +37,7 @@ const UsersTable = async () => {
 								tickets={user.ticketsAssigned.length.toString()}
 								projects={user.projects.length.toString()}
 								userId={user.id}
+								key={user.id}
 							/>
 						))}
 					</tbody>

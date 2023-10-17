@@ -44,7 +44,7 @@ const AssignedTicketsRow = (props: AssignedTicketsRowProps) => {
 					}}>
 					<th colSpan={4}>
 						<Link
-							className='w-full text-center py-2 px-4 border-2 rounded-lg bg-accent text-white '
+							className='w-full text-center py-2 px-4 border-2 rounded-lg bg-accent text-white text-accent-foreground hover:bg-accent-foreground hover:text-accent '
 							href={`/dashboard/tickets/${props.id}`}>
 							Go to Ticket
 						</Link>

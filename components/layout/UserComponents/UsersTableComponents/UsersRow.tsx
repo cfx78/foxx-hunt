@@ -14,7 +14,6 @@ type UsersRowProps = {
 
 const UsersRow = (props: UsersRowProps) => {
 	const [isOpen, setIsOpen] = useState(false);
-	console.log(`userId in UsersRow: ${props.userId}`);
 
 	return (
 		<>
@@ -49,7 +48,7 @@ const UsersRow = (props: UsersRowProps) => {
 					}}>
 					<th colSpan={4}>
 						<Link
-							className='w-full px-4 py-2 text-center text-white border-2 rounded-lg bg-accent '
+							className='w-full px-4 py-2 text-center text-white border-2 rounded-lg bg-accent text-primary hover:bg-accent-foreground hover:text-accent'
 							href={`/dashboard/users/${props.userId}`}>
 							Go to User
 						</Link>

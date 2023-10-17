@@ -11,7 +11,6 @@ const ProjectsTable = async () => {
 			createdAt: 'desc',
 		},
 	});
-	console.log('projects', projects);
 
 	return (
 		<div className='flex-col justify-center items-center py-14'>

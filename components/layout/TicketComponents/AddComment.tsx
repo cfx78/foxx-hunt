@@ -40,7 +40,7 @@ const AddComment = (props: Props) => {
 			body: JSON.stringify({ comment }),
 		});
 
-		console.log(response);
+
 
 		setComment({
 			body: '',
@@ -92,28 +92,7 @@ const AddComment = (props: Props) => {
 				</div>
 			</DialogContent>
 		</Dialog>
-		// <>
-		// 	<form onSubmit={handleSubmit}>
-		// 		<Textarea
-		// 			type='textarea'
-		// 			variant='underlined'
-		// 			label='Comment'
-		// 			name='name'
-		// 			value={comment.body}
-		// 			onChange={(e) =>
-		// 				setComment({ ...comment, body: e.target.value })
-		// 			}
-		// 			className='max-w-xs'
-		// 		/>
 
-		// 		<Button
-		// 			className='w-full rounded-t-none'
-		// 			type='submit'
-		// 			variant='ghost'>
-		// 			Submit
-		// 		</Button>
-		// 	</form>
-		// </>
 	);
 };
 

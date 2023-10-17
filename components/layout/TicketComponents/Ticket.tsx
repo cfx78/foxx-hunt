@@ -10,15 +10,11 @@ type TicketProps = {
 const Ticket = async (props: TicketProps) => {
 	const session = await getServerSession(authOptions);
 
-	console.log(session?.user?.email);
-
 	const user = await prisma.user.findUnique({
 		where: {
 			email: session?.user?.email as string,
 		},
 	});
-
-	console.log('user', user?.email);
 
 	return (
 		<div className='w-[90vw] lg:w-[25vw] bg-slate-300 dark:bg-slate-700 dark:text-slate-200 rounded-lg shadow-2xl p-10 m-4 mx-auto'>

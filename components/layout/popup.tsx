@@ -47,7 +47,6 @@ const Popup = (props: Props) => {
 				body: JSON.stringify({ data }),
 			});
 			const user = await response.json();
-			console.log(user);
 
 			signIn('credentials', {
 				...data,

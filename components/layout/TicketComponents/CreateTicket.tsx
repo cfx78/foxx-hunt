@@ -35,9 +35,9 @@ const CreateTicket = (props: CreateTicketProps) => {
 			body: JSON.stringify({ data }),
 		});
 
-		console.log(response);
+
 		const ticket = await response.json();
-		console.log(ticket);
+
 		router.refresh();
 
 		setData({

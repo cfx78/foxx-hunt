@@ -6,7 +6,7 @@ type UserProfileProps = {
 
 const UserProfile = (props: UserProfileProps) => {
 	return (
-		<div className='bg-white overflow-hidden shadow rounded-lg border'>
+		<div className='bg-white w-full max-w-2xl overflow-hidden shadow rounded-lg border'>
 			<div className='px-4 py-5 sm:px-6'>
 				<h3 className='text-lg leading-6 font-medium text-gray-900'>
 					User Profile
@@ -46,8 +46,10 @@ const UserProfile = (props: UserProfileProps) => {
 							Current Projects
 						</dt>
 						{props.user.projects.map((project) => (
-							<dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-								<div key={project.id}>
+							<dd
+								key={project.id}
+								className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+								<div>
 									<Link
 										href={`/dashboard/projects/${project.id}`}
 										className='text-blue-500 hover:text-blue-700'>
@@ -61,25 +63,26 @@ const UserProfile = (props: UserProfileProps) => {
 						<dt className='text-sm font-medium text-gray-500'>
 							Created Tickets
 						</dt>
-						{props.user.ticketsCreated.map((ticket) => (
-							<dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-								<div key={ticket.id}>
-									<Link
-										href={`/dashboard/tickets/${ticket.id}`}
-										className='text-blue-500 hover:text-blue-700'>
-										{ticket.title}
-									</Link>
-								</div>
-							</dd>
-						))}
+						<dd className='mt-1 text-sm space-x-3 flex w-full max-w-md text-gray-900 sm:mt-0 sm:col-span-2'>
+							{props.user.ticketsCreated.map((ticket) => (
+								<Link
+									key={ticket.id}
+									href={`/dashboard/tickets/${ticket.id}`}
+									className='text-blue-500 hover:text-blue-700'>
+									{ticket.title}
+								</Link>
+							))}
+						</dd>
 					</div>
 					<div className='py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
 						<dt className='text-sm font-medium text-gray-500'>
 							Assigned Tickets
 						</dt>
 						{props.user.ticketsAssigned.map((ticket) => (
-							<dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-								<div key={ticket.id}>
+							<dd
+								key={ticket.id}
+								className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+								<div>
 									<Link
 										href={`/dashboard/tickets/${ticket.id}`}
 										className='text-blue-500 hover:text-blue-700'>

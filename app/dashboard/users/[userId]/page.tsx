@@ -1,6 +1,9 @@
 import UserProfile from '@/components/layout/UserComponents/UserProfile';
-
 import prisma from '@/lib/db';
+import {
+	UserPageFunctions,
+	UserPageFunctionsProps,
+} from '@/lib/ServerComponentFunctions/DynamicPages/UserPageFunctions';
 
 type UserPageParams = {
 	params: {
@@ -9,62 +12,15 @@ type UserPageParams = {
 };
 
 const UserPage = async ({ params: { userId } }: UserPageParams) => {
-	console.log(`userId: ${userId}`);
-	const user = await prisma.user.findUnique({
-		where: {
-			id: userId,
-		},
-		include: {
-			accounts: true,
-			projects: true,
-			ticketsAssigned: true,
-			ticketsCreated: true,
-		},
-	});
-
-	if (!user) {
-		return <h1>Ticket Not Found</h1>;
-	}
-
-	console.log(`user: ${user}`);
-
-	const userInformation = {
-		id: user.id,
-		email: user.email,
-		name: user.name || '',
-		role: user.role,
-		ticketsCreated: user.ticketsCreated.map((ticket) => ({
-			id: ticket.id,
-			title: ticket.title,
-			status: ticket.status,
-			priority: ticket.priority,
-			type: ticket.type,
-			createdAt: ticket.createdAt,
-			updatedAt: ticket.updatedAt,
-			project: ticket.projectName,
-		})),
-		ticketsAssigned: user.ticketsAssigned.map((ticket) => ({
-			id: ticket.id,
-			title: ticket.title,
-			status: ticket.status,
-			priority: ticket.priority,
-			type: ticket.type,
-			createdAt: ticket.createdAt,
-			updatedAt: ticket.updatedAt,
-
-			project: ticket.projectName,
-		})),
-		projects: user.projects.map((project) => ({
-			id: project.id,
-			name: project.name,
-		})),
-		createdAt: user.createdAt,
-		updatedAt: user.updatedAt,
+	const props: UserPageFunctionsProps = {
+		userId,
 	};
 
+	const data = await UserPageFunctions(props);
+
 	return (
-		<div className='w-full min-h-screen grid place-content-center place-items-center mx-auto py-24 '>
-			<UserProfile user={userInformation} />
+		<div className='w-full min-h-screen flex justify-center items-center mx-auto py-24 '>
+			<UserProfile user={data as UserInformation} />
 		</div>
 	);
 };

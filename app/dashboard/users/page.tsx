@@ -1,6 +1,6 @@
 import './styles.modules.css';
 import Header from '@/components/layout/Header';
-import UsersTable from '@/components/layout/UserComponents/UsersTable';
+import UsersTable from '@/components/layout/UserComponents/UsersTableComponents/UsersTable';
 
 const UsersPage = () => {
 	return (

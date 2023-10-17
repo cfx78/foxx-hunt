@@ -11,7 +11,7 @@ const DashboardFunctions = async () => {
 	}
 
 	const userEmail = session.user?.email;
-	console.log(userEmail);
+
 
 	const user = await prisma.user.findUnique({
 		where: {

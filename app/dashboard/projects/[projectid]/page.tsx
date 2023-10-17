@@ -1,11 +1,13 @@
 import './styles.modules.css';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import Header from '@/components/layout/Header';
 import CreateTicket from '@/components/layout/TicketComponents/CreateTicket';
 import ProjectTicketsTable from '@/components/layout/TicketComponents/ProjectTicketsTableComponents/ProjectTicketsTable';
+import {
+	ProjectPageFunctions,
+	ProjectPageFunctionsProps,
+} from '@/lib/ServerComponentFunctions/DynamicPages/ProjectPageFunctions';
 import prisma from '@/lib/db';
-import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
+
 type ProjectPageParams = {
 	params: {
 		projectid: string;
@@ -13,72 +15,27 @@ type ProjectPageParams = {
 };
 
 const ProjectPage = async ({ params: { projectid } }: ProjectPageParams) => {
-	const userSession = await getServerSession(authOptions);
+	const props: ProjectPageFunctionsProps = {
+		projectid,
+	};
 
-	if (userSession === null) {
-		redirect('/');
-	}
-
-	const userEmail = userSession.user?.email;
-
-	const user = await prisma.user.findUnique({
-		where: {
-			email: userEmail as string,
-		},
-	});
-
-	const projects = await prisma.project.findMany({
-		select: {
-			name: true,
-		},
-	});
-
-	const projectNames = projects?.map((project) => project.name);
-
-	const project = await prisma.project.findUnique({
-		where: {
-			id: projectid,
-		},
-		include: {
-			tickets: {
-				select: {
-					id: true,
-					title: true,
-					status: true,
-					assignedTo: true,
-					assignedToId: true,
-					createdAt: true,
-					updatedAt: true,
-					createdBy: true,
-					createdByUserId: true,
-					body: true,
-					comments: true,
-					project: true,
-					projectName: true,
-					priority: true,
-					type: true,
-				},
-				orderBy: {
-					createdAt: 'asc',
-				},
-			},
-		},
-	});
-
+	const data = await ProjectPageFunctions(props);
 	return (
 		<div className='project-container'>
-			<Header pageTitle={project?.name as string} />
+			<Header pageTitle={data.project?.name as string} />
 			<main>
 				<CreateTicket
-					userID={user?.id as string}
-					projectName={project?.name as string}
-					projects={projectNames as []}
+					userID={data.user?.id as string}
+					projectName={data.project?.name as string}
+					projects={data.projectNames as []}
 				/>
 				<h2 className='py-5 text-4xl text-center'>
-					{`'${project?.name}'`} Tickets
+					{`'${data.project?.name}'`} Tickets
 				</h2>
 
-				<ProjectTicketsTable ticketsArray={project?.tickets as []} />
+				<ProjectTicketsTable
+					ticketsArray={data.project?.tickets as []}
+				/>
 			</main>
 		</div>
 	);
