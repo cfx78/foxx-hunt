@@ -5,9 +5,6 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
 	const body = await request.json();
 	const { name, email, password } = body.data;
-	console.log(
-		'|name: ' + name + ' |email: ' + email + ' |password: ' + password,
-	);
 
 	if (!name || !email || !password) {
 		return new NextResponse('Missing name, email or password', {
@@ -30,6 +27,6 @@ export async function POST(request: NextRequest) {
 		},
 	});
 	prisma.$disconnect();
-	console.log(user);
+
 	return NextResponse.json(user);
 }

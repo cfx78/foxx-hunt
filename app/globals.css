@@ -48,6 +48,9 @@
 		--ring: 192 92% 37% /* cyan-600 */;
 	}
 }
+main {
+	@apply flex flex-col justify-center w-full h-full px-4 py-32 mx-auto mt-16 lg:pl-20 max-w-7xl;
+}
 
 @layer base {
 	* {

@@ -4,18 +4,6 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
 	const body = await request.json();
 
-	console.log(
-		'|title: ' +
-			body.data.title +
-			' |userID: ' +
-			body.data.userID +
-			' |project: ' +
-			body.data.project,
-		' |body: ' + body.data.body,
-		' |priority: ' + body.data.priority,
-		' |type: ' + body.data.type,
-	);
-
 	if (
 		!body.data.project ||
 		!body.data.title ||
@@ -45,6 +33,6 @@ export async function POST(request: NextRequest) {
 	});
 
 	prisma.$disconnect();
-	console.log(ticket);
+
 	return NextResponse.json(ticket);
 }

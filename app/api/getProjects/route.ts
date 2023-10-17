@@ -12,6 +12,5 @@ export async function GET() {
 		},
 	});
 	prisma.$disconnect();
-	console.log('From The Api Route' + JSON.stringify(projects));
 	return NextResponse.json({ projects });
 }

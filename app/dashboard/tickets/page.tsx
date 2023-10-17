@@ -1,33 +1,18 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import './styles.modules.css';
 import Header from '@/components/layout/Header';
 import AssignedTicketsTable from '@/components/layout/TicketComponents/AssignedTicketsComponents/AssignedTicketsTable';
-import prisma from '@/lib/db';
-import { getServerSession } from 'next-auth';
+import TicketsPageFunctions from '@/lib/ServerComponentFunctions/MainPages/TicketsPageFunctions';
 
 const TicketsPage = async () => {
-	const session = await getServerSession(authOptions);
-
-	const userEmail = session?.user?.email;
-
-	const user = await prisma.user.findUnique({
-		where: {
-			email: userEmail as string,
-		},
-	});
-
-	const userTickets = await prisma.ticket.findMany({
-		where: {
-			createdByUserId: user?.id,
-		},
-	});
+	const data = await TicketsPageFunctions();
 
 	return (
-		<div className='lg:max-w-[94.58vw] lg:mx-auto w-full max-w-screen  h-full lg:h-screen lg:top-0 lg:right-0 lg:fixed lg:py-24 lg:px-4'>
+		<div className='tickets-container'>
 			<Header pageTitle='Tickets' />
-			<div className='flex flex-col justify-center w-full h-full px-4 pt-56 mt-16 lg:pt-0 '>
+			<main>
 				<h1 className='w-full text-3xl text-center'>Your Tickets</h1>
-				<AssignedTicketsTable ticketsArray={userTickets as []} />
-			</div>
+				<AssignedTicketsTable ticketsArray={data.userTickets as []} />
+			</main>
 		</div>
 	);
 };

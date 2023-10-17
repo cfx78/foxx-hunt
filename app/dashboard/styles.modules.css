@@ -1,0 +1,11 @@
+.dashboard-container {
+	@apply w-full min-h-screen mx-auto lg:max-w-[87.58vw];
+}
+
+.bar-chart-container {
+	@apply flex-col items-center justify-center hidden w-full h-full gap-2 px-4 md:flex pt-36 lg:py-0 lg:px-0;
+}
+
+.pie-charts-container {
+	@apply flex-col items-center w-full h-full lg:flex-row lg:flex justify-evenly py-28;
+}

@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
 	const body = await request.json();
 	const name = body.createProject as string;
-	console.log('|Project Name: ' + name);
 
 	if (!name) {
 		return new NextResponse('Missing name', {
@@ -24,6 +23,6 @@ export async function POST(request: NextRequest) {
 		},
 	});
 	prisma.$disconnect();
-	console.log(project);
+
 	return NextResponse.json(project);
 }

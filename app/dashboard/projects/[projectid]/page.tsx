@@ -1,6 +1,8 @@
+import './styles.modules.css';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import Header from '@/components/layout/Header';
 import CreateTicket from '@/components/layout/TicketComponents/CreateTicket';
-import ProjectTicketsTable from '@/components/layout/TicketComponents/ProjectTicketsTable';
+import ProjectTicketsTable from '@/components/layout/TicketComponents/ProjectTicketsTableComponents/ProjectTicketsTable';
 import prisma from '@/lib/db';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
@@ -25,8 +27,6 @@ const ProjectPage = async ({ params: { projectid } }: ProjectPageParams) => {
 		},
 	});
 
-	console.log(user);
-
 	const projects = await prisma.project.findMany({
 		select: {
 			name: true,
@@ -35,7 +35,6 @@ const ProjectPage = async ({ params: { projectid } }: ProjectPageParams) => {
 
 	const projectNames = projects?.map((project) => project.name);
 
-	console.log(projects?.map((project) => project.name));
 	const project = await prisma.project.findUnique({
 		where: {
 			id: projectid,
@@ -66,21 +65,21 @@ const ProjectPage = async ({ params: { projectid } }: ProjectPageParams) => {
 		},
 	});
 
-	console.log(project);
-
 	return (
-		<div className='w-full min-h-screen grid place-content-center place-items-center mx-auto py-24 px-4'>
-			<h1 className='text-3xl underline underline-offset-4 pb-6'>
-				{project?.name}
-			</h1>
-			<CreateTicket
-				userID={user?.id as string}
-				projectName={project?.name as string}
-				projects={projectNames as []}
-			/>
-			<h2 className='py-5 text-2xl'>{project?.name} Tickets</h2>
+		<div className='project-container'>
+			<Header pageTitle={project?.name as string} />
+			<main>
+				<CreateTicket
+					userID={user?.id as string}
+					projectName={project?.name as string}
+					projects={projectNames as []}
+				/>
+				<h2 className='py-5 text-4xl text-center'>
+					{`'${project?.name}'`} Tickets
+				</h2>
 
-			<ProjectTicketsTable ticketsArray={project?.tickets as []} />
+				<ProjectTicketsTable ticketsArray={project?.tickets as []} />
+			</main>
 		</div>
 	);
 };

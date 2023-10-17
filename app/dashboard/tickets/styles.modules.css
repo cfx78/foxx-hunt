@@ -1,0 +1,3 @@
+.tickets-container {
+	@apply lg:max-w-[94.58vw] lg:mx-auto w-full h-full lg:h-screen lg:top-0 lg:right-0 lg:fixed lg:py-24 lg:px-4;
+}

@@ -1,3 +1,7 @@
+import './styles.modules.css';
+import ModeToggle from '@/components/layout/darkmode';
+import Popup from '@/components/layout/popup';
+import { PiEnvelopeSimpleThin } from 'react-icons/pi';
 import {
 	Card,
 	CardContent,
@@ -7,28 +11,17 @@ import {
 	CardTitle,
 } from '@/components/ui/card';
 
-import ModeToggle from '@/components/layout/darkmode';
-
-import Popup from '@/components/layout/popup';
-
-import { PiEnvelopeSimpleThin } from 'react-icons/pi';
-import { getServerSession } from 'next-auth';
-import { authOptions } from './api/auth/[...nextauth]/route';
-
 import SignInButton from '@/components/layout/SignInButton';
 
 export default async function Home() {
-	const session = await getServerSession(authOptions);
-	console.log(session);
-
 	return (
-		<main className='relative flex flex-col items-center justify-center w-screen h-screen p-4'>
-			<Card className='absolute border-0 shadow-2xl border-y-4 w-96 lg:w-3/5 lg:h-auto lg:py-4'>
-				<div className='flex items-center justify-center w-full pt-4 pb-6'>
+		<main>
+			<Card className='main-card'>
+				<div className='toggle-theme'>
 					<ModeToggle />
 				</div>
 				<CardHeader>
-					<CardTitle className='text-5xl text-center'>
+					<CardTitle className=' main-card-title'>
 						<p>
 							Foxx <span className='text-4xl'>🦊</span> Hunt
 						</p>

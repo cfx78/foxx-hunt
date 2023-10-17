@@ -22,7 +22,7 @@ const ProjectsTableRow = (props: ProjectRowProps) => {
 				<td className='text-center '>
 					{props.createdAt.toDateString()}
 				</td>
-				<td className='text-center hidden md:block'>
+				<td className='hidden text-center md:block'>
 					{props.updatedAt.toDateString()}
 				</td>
 				<td className='text-right'>{props.tickets.length}</td>
@@ -49,7 +49,7 @@ const ProjectsTableRow = (props: ProjectRowProps) => {
 					}}>
 					<th colSpan={4}>
 						<Link
-							className='w-full text-center py-2 px-4 border-2 rounded-lg bg-accent text-white '
+							className='w-full px-4 py-2 text-center text-white border-2 rounded-lg bg-accent text-accent-foreground border-accent-foreground hover:bg-accent-foreground hover:text-accent'
 							href={`/dashboard/projects/${props.id}`}>
 							Go to Project
 						</Link>

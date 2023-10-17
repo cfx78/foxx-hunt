@@ -18,32 +18,32 @@ type SidebarProps = {
 const Sidebar = (props: SidebarProps) => {
 	return (
 		<>
-			<nav className='flex-col top-0 left-0 fixed w-[6vw] border-8 h-full z-50'>
-				<div className='w-full flex flex-col gap-1 justify-center items-center pt-10'>
+			<nav className='flex-col bg-primary text-primary-foreground dark:text-accent-foreground top-0 left-0 fixed w-[6vw] border-8 h-full z-50'>
+				<div className='flex flex-col items-center justify-center w-full gap-1 pt-10'>
 					<div className='text-6xl '>🦊</div>
 					<small className='text-sm text-center'>Foxx Hunt </small>
 				</div>
 
-				<div className='w-full grid place-content-center pt-32'>
+				<div className='grid w-full pt-32 place-content-center'>
 					<ModeToggle />
 				</div>
-				<div className='flex flex-col justify-center items-center '>
+				<div className='flex flex-col items-center justify-center '>
 					<div className='flex items-center justify-center w-full pt-16 mb-2'>
 						<ProfileAvatar image={props.image} role={props.role} />
 					</div>
 					<small className='text-xs'>{props.name}</small>
 					<small className='text-xs'>{props.email}</small>
-					<ul className='flex-col items-center justify-center w-full pt-20 text-center space-y-20 '>
-						<li className='w-full flex items-center justify-center text-center'>
+					<ul className='flex-col items-center justify-center w-full pt-20 space-y-20 text-center '>
+						<li className='flex items-center justify-center w-full text-center'>
 							<Tooltip
 								content='Dashboard'
 								placement='right'
 								showArrow>
 								<Link
 									href='/dashboard'
-									className='w-fit text-2xl text-center hover:text-primary'>
+									className='text-2xl text-center w-fit hover:text-accent-foreground'>
 									<RxDashboard
-										className='w-full text-center mx-auto text-2xl'
+										className='mx-auto text-2xl text-center w-fit'
 										size={60}
 									/>
 								</Link>
@@ -56,9 +56,9 @@ const Sidebar = (props: SidebarProps) => {
 								showArrow>
 								<Link
 									href='/dashboard/projects'
-									className='w-fit text-2xl text-center hover:text-primary'>
+									className='text-2xl text-center w-fit hover:text-accent-foreground'>
 									<RxRulerSquare
-										className='w-full text-center mx-auto text-2xl'
+										className='mx-auto text-2xl text-center w-fit'
 										size={50}
 									/>
 								</Link>
@@ -71,9 +71,9 @@ const Sidebar = (props: SidebarProps) => {
 								showArrow>
 								<Link
 									href='/dashboard/tickets'
-									className='w-fit text-2xl text-center hover:text-primary'>
+									className='text-2xl text-center w-fit hover:text-accent-foreground'>
 									<RxReader
-										className='w-full text-center mx-auto text-2xl'
+										className='mx-auto text-2xl text-center w-fit'
 										size={70}
 									/>
 								</Link>
@@ -87,9 +87,9 @@ const Sidebar = (props: SidebarProps) => {
 									showArrow>
 									<Link
 										href='/dashboard/users'
-										className='w-fit text-2xl text-center hover:text-primary'>
+										className='text-2xl text-center w-fit hover:text-accent-foreground'>
 										<RxAvatar
-											className='w-full text-center mx-auto text-2xl'
+											className='mx-auto text-2xl text-center w-fit'
 											size={70}
 										/>
 									</Link>

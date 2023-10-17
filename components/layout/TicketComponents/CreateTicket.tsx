@@ -51,17 +51,17 @@ const CreateTicket = (props: CreateTicketProps) => {
 	};
 
 	return (
-		<div className='w-full bg-white rounded shadow-2xl p-8 m-4 mx-auto'>
-			<h1 className='block w-full text-center text-gray-800 text-2xl font-bold mb-6'>
+		<div className='w-full max-w-4xl p-8 m-4 mx-auto bg-white rounded shadow-2xl'>
+			<h1 className='block w-full mb-6 text-2xl font-bold text-center text-gray-800'>
 				{props.projectName
-					? `Create Ticket for ${props.projectName} `
+					? `Create Ticket for '${props.projectName}' `
 					: 'Create Ticket'}
 			</h1>
 			<form onSubmit={handleSubmit}>
 				<div className='flex flex-col mb-4'>
 					<label
 						htmlFor='title'
-						className='mb-2 font-bold text-lg text-gray-900'>
+						className='mb-2 text-lg font-bold text-gray-900'>
 						Title
 					</label>
 					<input
@@ -72,14 +72,14 @@ const CreateTicket = (props: CreateTicketProps) => {
 						onChange={(e) =>
 							setData({ ...data, title: e.target.value })
 						}
-						className='border py-2 px-3 text-grey-800'
+						className='px-3 py-2 border rounded-sm border-primary text-grey-800'
 					/>
 				</div>
 
 				<div className='flex flex-col mb-4'>
 					<label
 						htmlFor='body'
-						className='mb-2 font-bold text-lg text-gray-900'>
+						className='mb-2 text-lg font-bold text-gray-900'>
 						Detailed Description of Issue
 					</label>
 					<textarea
@@ -90,7 +90,7 @@ const CreateTicket = (props: CreateTicketProps) => {
 						onChange={(e) =>
 							setData({ ...data, body: e.target.value })
 						}
-						className='border py-2 px-3 text-grey-800 resize'></textarea>
+						className='px-3 py-2 border rounded-sm resize text-grey-800 border-primary '></textarea>
 				</div>
 				{props.projectName ? (
 					' '
@@ -98,7 +98,7 @@ const CreateTicket = (props: CreateTicketProps) => {
 					<div className='flex flex-col mb-4'>
 						<label
 							htmlFor='projects'
-							className='mb-2 font-bold text-lg text-gray-900'>
+							className='mb-2 text-lg font-bold text-gray-900'>
 							Project
 						</label>
 						<select
@@ -108,7 +108,7 @@ const CreateTicket = (props: CreateTicketProps) => {
 							onChange={(e) =>
 								setData({ ...data, project: e.target.value })
 							}
-							className='border py-2 px-3 text-gray-800 dark:text-gray-200'>
+							className='px-3 py-2 text-gray-800 border rounded-sm border-primary dark:text-gray-200'>
 							<option value=''>
 								--Please choose a project--
 							</option>
@@ -123,7 +123,7 @@ const CreateTicket = (props: CreateTicketProps) => {
 				<div className='flex flex-col mb-4'>
 					<label
 						htmlFor='priority'
-						className='mb-2 font-bold text-lg text-gray-900'>
+						className='mb-2 text-lg font-bold text-gray-900'>
 						Priority
 					</label>
 					<select
@@ -133,7 +133,7 @@ const CreateTicket = (props: CreateTicketProps) => {
 						onChange={(e) =>
 							setData({ ...data, priority: e.target.value })
 						}
-						className='border py-2 px-3 text-gray-800 dark:text-gray-200'>
+						className='px-3 py-2 text-gray-800 border rounded-sm border-primary dark:text-gray-200'>
 						<option value=''>--Please choose a priority--</option>
 						{TicketPriorityArray.map((priority) => (
 							<option key={priority} value={priority}>
@@ -147,7 +147,7 @@ const CreateTicket = (props: CreateTicketProps) => {
 					<label
 						htmlFor='
 						type'
-						className='mb-2 font-bold text-lg text-gray-900'>
+						className='mb-2 text-lg font-bold text-gray-900'>
 						Type
 					</label>
 					<select
@@ -157,7 +157,7 @@ const CreateTicket = (props: CreateTicketProps) => {
 						onChange={(e) =>
 							setData({ ...data, type: e.target.value })
 						}
-						className='border py-2 px-3 text-gray-800 dark:text-gray-200'>
+						className='px-3 py-2 text-gray-800 border rounded-sm border-primary dark:text-gray-200'>
 						<option value=''>--Please choose an option--</option>
 						{TicketTypeArray.map((type) => (
 							<option key={type} value={type}>
@@ -166,7 +166,7 @@ const CreateTicket = (props: CreateTicketProps) => {
 						))}
 					</select>
 				</div>
-				<button className='block bg-secondary-400 hover:bg-secondary-600 text-gray-200 uppercase text-lg mx-auto p-4 rounded transition ease-in-out '>
+				<button className='block p-4 mx-auto text-lg text-gray-200 uppercase transition ease-in-out rounded bg-secondary-400 hover:bg-secondary-600 '>
 					Submit
 				</button>
 			</form>
