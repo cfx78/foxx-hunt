@@ -63,7 +63,7 @@ const UserProfile = (props: UserProfileProps) => {
 						<dt className='text-sm font-medium text-gray-500'>
 							Created Tickets
 						</dt>
-						<dd className='mt-1 text-sm space-x-3 flex w-full max-w-md text-gray-900 sm:mt-0 sm:col-span-2'>
+						<dd className='mt-1 text-sm space-x-8 flex items-center w-full max-w-md text-gray-900 sm:mt-0 sm:col-span-2'>
 							{props.user.ticketsCreated.map((ticket) => (
 								<Link
 									key={ticket.id}

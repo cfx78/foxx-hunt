@@ -1,3 +1,5 @@
+import Header from '@/components/layout/Header';
+import './styles.modules.css';
 import UserProfile from '@/components/layout/UserComponents/UserProfile';
 import prisma from '@/lib/db';
 import {
@@ -18,9 +20,28 @@ const UserPage = async ({ params: { userId } }: UserPageParams) => {
 
 	const data = await UserPageFunctions(props);
 
+	const user = await prisma.user.findUnique({
+		where: {
+			id: userId,
+		},
+	});
+
+	if (!user) {
+		return <div>404</div>;
+	}
+
 	return (
-		<div className='w-full min-h-screen flex justify-center items-center mx-auto py-24 '>
-			<UserProfile user={data as UserInformation} />
+		<div className='user-container'>
+			{user.name !== undefined ||
+			user.name !== null ||
+			user.name !== '' ? (
+				<Header pageTitle={user.name as string} />
+			) : (
+				<Header pageTitle={user.email} />
+			)}
+			<main className='flex justify-center items-center '>
+				<UserProfile user={data as UserInformation} />
+			</main>
 		</div>
 	);
 };

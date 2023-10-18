@@ -16,7 +16,7 @@ const CreatedTicketsTable = (props: CreatedTicketsTableProps) => {
 			<thead>
 				<tr>
 					<th>
-						<div className='table-heading'>Title</div>
+						<div className='table-heading-start'>Title</div>
 					</th>
 					<th>
 						<div className='table-heading'>Status</div>
@@ -25,11 +25,11 @@ const CreatedTicketsTable = (props: CreatedTicketsTableProps) => {
 						<div className='table-heading'>Priority</div>
 					</th>
 					<th>
-						<div className='table-date'>Created</div>
+						<div className='table-heading'>Created</div>
 					</th>
 				</tr>
 			</thead>
-			<tbody className='text-sm divide-y divide-gray-100'>
+			<tbody>
 				{props.ticketsArray.map((ticket) => (
 					<CreatedTicketsRow
 						createdAt={ticket.createdAt}

@@ -21,9 +21,7 @@ const CreatedTicketsRow = (props: CreatedTicketsRowProps) => {
 				onClick={() => setIsOpen(!isOpen)}
 				className='cursor-pointer'>
 				<td>
-					<div className='text-lg  dark:text-gray-300'>
-						{props.title}
-					</div>
+					<div className='td-wrapper-start'>{props.title}</div>
 				</td>
 				<td>
 					{props.status === 'DONE' && (
@@ -60,7 +58,7 @@ const CreatedTicketsRow = (props: CreatedTicketsRowProps) => {
 					)}
 				</td>
 				<td>
-					<div className='text-lg text-center'>
+					<div className='td-wrapper'>
 						{props.createdAt.toDateString()}
 					</div>
 				</td>
@@ -86,7 +84,7 @@ const CreatedTicketsRow = (props: CreatedTicketsRowProps) => {
 							stiffness: 10,
 						},
 					}}>
-					<th colSpan={4} className='p-6 whitespace-nowrap'>
+					<th colSpan={4} className='p-6 '>
 						<Link
 							className='w-full px-4 py-2 text-center border-2 rounded-lg bg-accent text-accent-foreground border-accent-foreground hover:bg-accent-foreground hover:text-accent hover:border-accent transition ease-in-out '
 							href={`/dashboard/tickets/${props.id}`}>

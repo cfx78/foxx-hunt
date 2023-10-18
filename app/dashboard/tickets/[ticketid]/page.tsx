@@ -1,3 +1,5 @@
+import './styles.modules.css';
+import Header from '@/components/layout/Header';
 import Ticket from '@/components/layout/TicketComponents/Ticket';
 import prisma from '@/lib/db';
 import {
@@ -16,11 +18,24 @@ const TicketPage = async ({ params: { ticketid } }: TicketPageParams) => {
 		ticketid,
 	};
 
+	const ticket = await prisma.ticket.findUnique({
+		where: {
+			id: ticketid,
+		},
+	});
+
+	if (!ticket) {
+		return <div>404</div>;
+	}
+
 	const data = await TicketPageFunctions(props);
 
 	return (
-		<div className='w-full min-h-screen flex justify-center items-center mx-auto py-24 '>
-			<Ticket ticket={data as TicketInformation} />
+		<div className='ticket-container'>
+			<Header pageTitle={ticket.title} />
+			<main>
+				<Ticket ticket={data as TicketInformation} />
+			</main>
 		</div>
 	);
 };

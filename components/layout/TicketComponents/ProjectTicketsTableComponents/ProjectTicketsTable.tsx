@@ -13,24 +13,24 @@ type TicketsTableProps = {
 const ProjectTicketsTable = (props: TicketsTableProps) => {
 	return (
 		<>
-			<table className='w-full border-separate table-auto border-spacing-y-8'>
+			<table>
 				<thead>
 					<tr>
-						<th className='text-left underline underline-offset-2'>
-							Title
+						<th>
+							<div className='table-heading-start'>Title</div>
 						</th>
-						<th className='text-center underline underline-offset-2'>
-							Status
+						<th>
+							<div className='table-heading'>Status</div>
 						</th>
-						<th className='text-center underline underline-offset-2'>
-							Priority
+						<th>
+							<div className='table-heading'>Priority</div>
 						</th>
-						<th className='text-center underline underline-offset-2'>
-							Created
+						<th>
+							<div className='table-heading'>Created</div>
 						</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody className='divide-y divide-gray-100'>
 					{props.ticketsArray.map((ticket) => (
 						<ProjectsTicketsRow
 							key={ticket.id}

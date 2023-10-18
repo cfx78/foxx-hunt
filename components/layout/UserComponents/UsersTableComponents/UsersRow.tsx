@@ -21,12 +21,12 @@ const UsersRow = (props: UsersRowProps) => {
 				key={props.userId}
 				onClick={() => setIsOpen(!isOpen)}
 				className='cursor-pointer'>
-				<td className='text-left'>{props.name}</td>
-				<td className='max-w-[5rem] lg:max-w-full text-center truncate'>
+				<td className='td-wrapper-start'>{props.name}</td>
+				<td className='max-w-[5rem] lg:max-w-full td-wrapper truncate'>
 					{props.email}
 				</td>
-				<td className='text-center'>{props.tickets}</td>
-				<td className='text-right'>{props.projects}</td>
+				<td className='td-wrapper'>{props.tickets}</td>
+				<td className='td-wrapper'>{props.projects}</td>
 			</tr>
 			{isOpen && (
 				<motion.tr
@@ -49,7 +49,7 @@ const UsersRow = (props: UsersRowProps) => {
 							stiffness: 10,
 						},
 					}}>
-					<th colSpan={4}>
+					<th colSpan={4} className='p-6'>
 						<Link
 							className='w-full px-4 py-2 text-center border-2 rounded-lg bg-accent text-accent-foreground border-accent-foreground hover:bg-accent-foreground hover:text-accent hover:border-accent transition ease-in-out'
 							href={`/dashboard/users/${props.userId}`}>

@@ -21,14 +21,22 @@ const ProjectsTableRow = (props: ProjectRowProps) => {
 				key={props.id}
 				onClick={() => setIsOpen(!isOpen)}
 				className='cursor-pointer'>
-				<td className='text-left'>{props.name}</td>
-				<td className='text-center '>
-					{props.createdAt.toDateString()}
+				<td>
+					<div className='td-wrapper-start'>{props.name}</div>
 				</td>
-				<td className='hidden text-center md:block'>
-					{props.updatedAt.toDateString()}
+				<td>
+					<div className='td-wrapper'> {props.tickets.length} </div>
 				</td>
-				<td className='text-right'>{props.tickets.length}</td>
+				<td>
+					<div className='td-wrapper '>
+						{props.updatedAt.toDateString()}
+					</div>
+				</td>
+				<td>
+					<div className='td-wrapper'>
+						{props.createdAt.toDateString()}
+					</div>
+				</td>
 			</tr>
 			{isOpen && (
 				<motion.tr
@@ -50,7 +58,7 @@ const ProjectsTableRow = (props: ProjectRowProps) => {
 							stiffness: 10,
 						},
 					}}>
-					<th colSpan={4}>
+					<th colSpan={4} className='p-6'>
 						<Link
 							className='w-full px-4 py-2 text-center border-2 rounded-lg bg-accent text-accent-foreground border-accent-foreground hover:bg-accent-foreground hover:text-accent hover:border-accent transition ease-in-out'
 							href={`/dashboard/projects/${props.id}`}>

@@ -15,20 +15,20 @@ const ProjectsTable = async () => {
 	return (
 		<div className='flex-col justify-center items-center py-14'>
 			<h1 className='text-center text-2xl font-bold my-5'>Projects</h1>
-			<table className='table-auto w-full border-spacing-y-8 border-separate'>
+			<table>
 				<thead>
 					<tr>
-						<th className='text-left underline-offset-2 underline'>
-							Name
+						<th>
+							<div className='table-heading-start'>Name</div>
 						</th>
-						<th className='text-center underline-offset-2 underline'>
-							Created
+						<th>
+							<div className='table-heading'>Tickets</div>
 						</th>
-						<th className='text-center underline-offset-2 underline hidden md:block'>
-							Updated
+						<th>
+							<div className='table-heading '>Updated</div>
 						</th>
-						<th className='text-right underline-offset-2 underline'>
-							Tickets
+						<th>
+							<div className='table-heading'>Created</div>
 						</th>
 					</tr>
 				</thead>

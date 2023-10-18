@@ -14,15 +14,13 @@ type AssignedTicketsTableProps = {
 
 const AssignedTicketsTable = (props: AssignedTicketsTableProps) => {
 	return (
-		<table className='table-auto w-full border-spacing-y-8 border-separate'>
+		<table>
 			<thead>
 				<tr>
-					<th className='table-heading'>Title</th>
+					<th className='table-heading-start'>Title</th>
 					<th className='table-heading'>Status</th>
 					<th className='table-heading'>Priority</th>
-					<th className='text-right underline-offset-2 underline'>
-						Created
-					</th>
+					<th className='table-heading'>Created</th>
 				</tr>
 			</thead>
 			<tbody>
