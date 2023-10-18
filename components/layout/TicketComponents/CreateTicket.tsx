@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { TicketType, TicketPriority } from '@prisma/client';
 
 type CreateTicketProps = {
@@ -13,8 +12,6 @@ type CreateTicketProps = {
 const TicketTypeArray = Object.values(TicketType);
 const TicketPriorityArray = Object.values(TicketPriority);
 const CreateTicket = (props: CreateTicketProps) => {
-	const router = useRouter();
-
 	const [data, setData] = useState({
 		title: '',
 		body: '',
@@ -35,10 +32,7 @@ const CreateTicket = (props: CreateTicketProps) => {
 			body: JSON.stringify({ data }),
 		});
 
-
 		const ticket = await response.json();
-
-		router.refresh();
 
 		setData({
 			title: '',
@@ -48,6 +42,8 @@ const CreateTicket = (props: CreateTicketProps) => {
 			priority: '',
 			type: '',
 		});
+
+		window.location.reload();
 	};
 
 	return (

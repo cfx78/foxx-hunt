@@ -48,7 +48,7 @@ const AcceptTicketButton = (props: Props) => {
 
 		setTimeout(() => {
 			window.location.reload();
-		}, 8000);
+		}, 5000);
 	};
 
 	return (

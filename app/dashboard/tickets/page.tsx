@@ -1,17 +1,34 @@
 import './styles.modules.css';
 import Header from '@/components/layout/Header';
 import AssignedTicketsTable from '@/components/layout/TicketComponents/AssignedTicketsTableComponents/AssignedTicketsTable';
+import CreatedTicketsTable from '@/components/layout/TicketComponents/CreatedTicketsTableComponents/CreatedTicketsTable';
 import TicketsPageFunctions from '@/lib/ServerComponentFunctions/MainPages/TicketsPageFunctions';
 
 const TicketsPage = async () => {
 	const data = await TicketsPageFunctions();
 
+	console.log(data);
+
 	return (
 		<div className='tickets-container'>
 			<Header pageTitle='Tickets' />
 			<main>
-				<h1 className='w-full text-3xl text-center'>Your Tickets</h1>
-				<AssignedTicketsTable ticketsArray={data.userTickets as []} />
+				<section>
+					<h1 className='w-full text-3xl text-center pb-3'>
+						Assigned Tickets
+					</h1>
+					<AssignedTicketsTable
+						ticketsArray={data.assignedUserTickets as []}
+					/>
+				</section>
+				<section>
+					<h1 className='w-full text-3xl text-center pb-3'>
+						Created Tickets
+					</h1>
+					<CreatedTicketsTable
+						ticketsArray={data.createdUserTickets as []}
+					/>
+				</section>
 			</main>
 		</div>
 	);

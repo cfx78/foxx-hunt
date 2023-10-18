@@ -63,6 +63,27 @@ main {
 	scrollbar-width: none; /* Firefox */
 }
 
+table {
+	@apply w-full table-auto;
+}
+
+thead {
+	@apply text-lg font-semibold uppercase text-gray-950 rounded-md bg-gray-50;
+}
+
+th,
+td {
+	@apply p-2 whitespace-nowrap;
+}
+
+.table-heading {
+	@apply font-semibold text-left;
+}
+
+.table-date {
+	@apply font-semibold text-center;
+}
+
 @layer base {
 	* {
 		@apply border-border;
