@@ -56,7 +56,6 @@ const UpdateTicket = (props: Props) => {
 		});
 
 		const data = await response.json();
-		console.log(data);
 		setUpdateMessage({
 			newStatus: data.status,
 			newPriority: data.priority,

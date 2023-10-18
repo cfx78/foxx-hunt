@@ -5,6 +5,8 @@ import prisma from '@/lib/db';
 import CommentSection from './CommentSection';
 import UpdateTicket from './UpdateTicket';
 import { TicketPriority, TicketStatus } from '@prisma/client';
+import AcceptTicketButton from './AcceptTicketButton';
+import { redirect } from 'next/navigation';
 
 type TicketProps = {
 	ticket: TicketInformation;
@@ -12,11 +14,19 @@ type TicketProps = {
 const Ticket = async (props: TicketProps) => {
 	const session = await getServerSession(authOptions);
 
+	if (!session) {
+		redirect('/');
+	}
+
 	const user = await prisma.user.findUnique({
 		where: {
 			email: session?.user?.email as string,
 		},
 	});
+
+	if (!user) {
+		redirect('/');
+	}
 
 	const users = await prisma.user.findMany();
 	const usersArray = users.map((user) => {
@@ -156,22 +166,37 @@ const Ticket = async (props: TicketProps) => {
 				</h3>
 				<p className='text-lg'>{props.ticket.body}</p>
 			</div>
-			<div className='block w-full text-center  text-2xl font-bold mb-6'>
-				<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
-					Update Ticket
-				</h3>
-				<div className='w-full flex justify-center items-center flex-col'>
-					<UpdateTicket
-						priority={props.ticket.priority as TicketPriority}
-						status={props.ticket.status as TicketStatus}
-						ticketId={props.ticket.id}
-						userEmail={props.ticket.assignedTo?.email as string}
-						title={props.ticket.title}
-						key={props.ticket.id}
-						usersArray={usersArray}
-					/>
+			{user.role !== 'ADMIN' ? (
+				<div className='block w-full text-center  text-2xl font-bold mb-6'>
+					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
+						Update Ticket
+					</h3>
+					<div className='w-full flex justify-center items-center flex-col'>
+						<UpdateTicket
+							priority={props.ticket.priority as TicketPriority}
+							status={props.ticket.status as TicketStatus}
+							ticketId={props.ticket.id}
+							userEmail={props.ticket.assignedTo?.email as string}
+							title={props.ticket.title}
+							key={props.ticket.id}
+							usersArray={usersArray}
+						/>
+					</div>
 				</div>
-			</div>
+			) : (
+				<div className='block w-full text-center  text-2xl font-bold mb-6'>
+					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
+						Accept Ticket
+					</h3>
+					<div className='w-full flex justify-center items-center flex-col'>
+						<AcceptTicketButton
+							title={props.ticket.title}
+							ticketId={props.ticket.id}
+							userId={user.id}
+						/>
+					</div>
+				</div>
+			)}
 
 			<div className='block w-full text-center  text-2xl font-bold mb-6'>
 				<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
