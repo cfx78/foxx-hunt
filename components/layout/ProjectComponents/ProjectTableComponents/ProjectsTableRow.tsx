@@ -17,7 +17,10 @@ const ProjectsTableRow = (props: ProjectRowProps) => {
 
 	return (
 		<>
-			<tr key={props.id} onClick={() => setIsOpen(!isOpen)}>
+			<tr
+				key={props.id}
+				onClick={() => setIsOpen(!isOpen)}
+				className='cursor-pointer'>
 				<td className='text-left'>{props.name}</td>
 				<td className='text-center '>
 					{props.createdAt.toDateString()}
@@ -49,7 +52,7 @@ const ProjectsTableRow = (props: ProjectRowProps) => {
 					}}>
 					<th colSpan={4}>
 						<Link
-							className='w-full px-4 py-2 text-center text-white border-2 rounded-lg bg-accent text-accent-foreground border-accent-foreground hover:bg-accent-foreground hover:text-accent'
+							className='w-full px-4 py-2 text-center border-2 rounded-lg bg-accent text-accent-foreground border-accent-foreground hover:bg-accent-foreground hover:text-accent hover:border-accent transition ease-in-out'
 							href={`/dashboard/projects/${props.id}`}>
 							Go to Project
 						</Link>

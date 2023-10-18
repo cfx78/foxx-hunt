@@ -18,7 +18,7 @@ type SidebarProps = {
 const Sidebar = (props: SidebarProps) => {
 	return (
 		<>
-			<nav className='flex-col bg-primary text-primary-foreground dark:text-accent-foreground top-0 left-0 fixed w-[6vw] border-8 h-full z-50'>
+			<nav className='flex-col bg-primary text-primary-foreground dark:text-accent-foreground top-0 left-0 fixed w-[8vw] border-8 h-full z-50'>
 				<div className='flex flex-col items-center justify-center w-full gap-1 pt-3'>
 					<div className='text-6xl '>🦊</div>
 					<small className='text-sm text-center'>Foxx Hunt </small>

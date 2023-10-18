@@ -19,7 +19,7 @@ const TicketPage = async ({ params: { ticketid } }: TicketPageParams) => {
 	const data = await TicketPageFunctions(props);
 
 	return (
-		<div className='w-full min-h-screen grid place-content-center place-items-center mx-auto py-24 '>
+		<div className='w-full min-h-screen flex justify-center items-center mx-auto py-24 '>
 			<Ticket ticket={data as TicketInformation} />
 		</div>
 	);

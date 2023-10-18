@@ -16,7 +16,10 @@ const ProjectsTicketsRow = (props: ProjectsTicketsRowProps) => {
 
 	return (
 		<>
-			<tr key={props.id} onClick={() => setIsOpen(!isOpen)}>
+			<tr
+				key={props.id}
+				onClick={() => setIsOpen(!isOpen)}
+				className='cursor-pointer'>
 				<td className='text-left'>{props.title}</td>
 				<td className='text-center'>{props.status}</td>
 				<td className='text-center'>{props.priority}</td>
@@ -45,7 +48,7 @@ const ProjectsTicketsRow = (props: ProjectsTicketsRowProps) => {
 					}}>
 					<th colSpan={4}>
 						<Link
-							className='w-full px-4 py-2 text-center text-white border-2 rounded-lg bg-accent text-accent-foreground hover:bg-accent-foreground hover:text-accent '
+							className='w-full px-4 py-2 text-center border-2 rounded-lg bg-accent text-accent-foreground border-accent-foreground hover:bg-accent-foreground hover:text-accent hover:border-accent transition ease-in-out '
 							href={`/dashboard/tickets/${props.id}`}>
 							Go to Ticket
 						</Link>

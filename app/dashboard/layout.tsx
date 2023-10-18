@@ -18,14 +18,12 @@ export default async function DashboardLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang='en'>
-			<body className={`${exo2.className}`}>
-				<Providers>
-					<Navigation />
+		<body className={`no-scrollbar ${exo2.className}`}>
+			<Providers>
+				<Navigation />
 
-					<div>{children}</div>
-				</Providers>
-			</body>
-		</html>
+				<div>{children}</div>
+			</Providers>
+		</body>
 	);
 }

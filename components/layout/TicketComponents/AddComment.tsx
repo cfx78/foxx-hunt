@@ -40,8 +40,6 @@ const AddComment = (props: Props) => {
 			body: JSON.stringify({ comment }),
 		});
 
-
-
 		setComment({
 			body: '',
 			userName: props.userName,
@@ -92,7 +90,6 @@ const AddComment = (props: Props) => {
 				</div>
 			</DialogContent>
 		</Dialog>
-
 	);
 };
 

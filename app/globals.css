@@ -52,6 +52,17 @@ main {
 	@apply flex flex-col justify-center w-full h-full px-4 py-32 mx-auto mt-16 lg:pl-20 max-w-7xl rounded-t-lg;
 }
 
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+/* For IE, Edge and Firefox */
+.no-scrollbar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
 @layer base {
 	* {
 		@apply border-border;

@@ -16,7 +16,8 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body className={`debug-screens ${fragMono.className}`}>
+			<body
+				className={`debug-screens ${fragMono.className} no-scrollbar`}>
 				<Providers>{children}</Providers>
 			</body>
 		</html>

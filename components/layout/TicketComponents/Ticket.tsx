@@ -3,6 +3,8 @@ import AddComment from './AddComment';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import prisma from '@/lib/db';
 import CommentSection from './CommentSection';
+import UpdateTicket from './UpdateTicket';
+import { TicketPriority, TicketStatus } from '@prisma/client';
 
 type TicketProps = {
 	ticket: TicketInformation;
@@ -16,8 +18,13 @@ const Ticket = async (props: TicketProps) => {
 		},
 	});
 
+	const users = await prisma.user.findMany();
+	const usersArray = users.map((user) => {
+		return user.email;
+	});
+
 	return (
-		<div className='w-[90vw] lg:w-[25vw] bg-slate-300 dark:bg-slate-700 dark:text-slate-200 rounded-lg shadow-2xl p-10 m-4 mx-auto'>
+		<div className='w-full max-w-7xl bg-slate-300 dark:bg-slate-700 dark:text-slate-200 rounded-lg shadow-2xl p-10 m-4 mx-auto'>
 			<div className='block w-full lg:text-left lg:gap-8  text-center font-bold mb-6'>
 				<h2 className='text-4xl underline underline-offset-4 dark:decoration-slate-900'>
 					Title
@@ -29,7 +36,7 @@ const Ticket = async (props: TicketProps) => {
 					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
 						Status
 					</h3>
-					{props.ticket.status === 'CLOSED' && (
+					{props.ticket.status === 'DONE' && (
 						<p className='text-lg text-success'>
 							{props.ticket.status}
 						</p>
@@ -149,6 +156,22 @@ const Ticket = async (props: TicketProps) => {
 				</h3>
 				<p className='text-lg'>{props.ticket.body}</p>
 			</div>
+			<div className='block w-full text-center  text-2xl font-bold mb-6'>
+				<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
+					Update Ticket
+				</h3>
+				<div className='w-full flex justify-center items-center flex-col'>
+					<UpdateTicket
+						priority={props.ticket.priority as TicketPriority}
+						status={props.ticket.status as TicketStatus}
+						ticketId={props.ticket.id}
+						userEmail={props.ticket.assignedTo?.email as string}
+						title={props.ticket.title}
+						key={props.ticket.id}
+						usersArray={usersArray}
+					/>
+				</div>
+			</div>
 
 			<div className='block w-full text-center  text-2xl font-bold mb-6'>
 				<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
@@ -163,15 +186,13 @@ const Ticket = async (props: TicketProps) => {
 				</div>
 
 				{props.ticket.comments.map((comment) => (
-					<>
-						<CommentSection
-							key={comment.body}
-							name={comment.userName}
-							email={comment.userEmail}
-							date={comment.createdAt}
-							comment={comment.body}
-						/>
-					</>
+					<CommentSection
+						key={comment.body}
+						name={comment.userName}
+						email={comment.userEmail}
+						date={comment.createdAt}
+						comment={comment.body}
+					/>
 				))}
 			</div>
 		</div>
@@ -179,31 +200,3 @@ const Ticket = async (props: TicketProps) => {
 };
 
 export default Ticket;
-{
-	/* <h1>Ticket Name: {ticket?.title}</h1>
-			<h2>Ticket Status: {ticket?.status}</h2>
-			<h2>Ticket Priority: {ticket?.priority}</h2>
-			<h2>Ticket Type: {ticket?.type}</h2>
-			<h2>Ticket Project: {ticket?.project?.name}</h2>
-			<h2>Ticket Created By: {ticket?.createdBy?.name}</h2>
-			<h2>Ticket Assigned To: {ticket?.assignedTo?.name}</h2>
-			<h2>Ticket Body: {ticket?.body}</h2>
-			<h2>Ticket Created At: {ticket?.createdAt.toDateString()}</h2>
-			<h2>Ticket Updated At: {ticket?.updatedAt.toDateString()}</h2>
-			<h2>Ticket Comments:</h2>
-			<ul>
-				{ticket?.comments.map((comment) => (
-					<li key={comment.id}>
-						<h3>Comment Body: {comment.body}</h3>
-						<h3>
-							Comment Created By: {comment.createdBy.name}-
-							{comment.createdByUserEmail}
-						</h3>
-						<h3>
-							Comment Created At:{' '}
-							{comment.createdAt.toDateString()}
-						</h3>
-					</li>
-				))}
-			</ul> */
-}
