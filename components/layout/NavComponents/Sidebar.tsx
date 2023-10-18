@@ -41,7 +41,7 @@ const Sidebar = (props: SidebarProps) => {
 								showArrow>
 								<Link
 									href='/dashboard'
-									className='text-2xl text-center w-fit hover:text-accent-foreground'>
+									className='text-2xl text-center w-fit hover:text-accent-foreground dark:hover:text-accent'>
 									<RxDashboard
 										className='mx-auto text-2xl text-center w-fit'
 										size={60}
@@ -56,7 +56,7 @@ const Sidebar = (props: SidebarProps) => {
 								showArrow>
 								<Link
 									href='/dashboard/projects'
-									className='text-2xl text-center w-fit hover:text-accent-foreground'>
+									className='text-2xl text-center w-fit hover:text-accent-foreground dark:hover:text-accent'>
 									<RxRulerSquare
 										className='mx-auto text-2xl text-center w-fit'
 										size={50}
@@ -71,7 +71,7 @@ const Sidebar = (props: SidebarProps) => {
 								showArrow>
 								<Link
 									href='/dashboard/tickets'
-									className='text-2xl text-center w-fit hover:text-accent-foreground'>
+									className='text-2xl text-center w-fit hover:text-accent-foreground dark:hover:text-accent'>
 									<RxReader
 										className='mx-auto text-2xl text-center w-fit'
 										size={70}
@@ -87,7 +87,7 @@ const Sidebar = (props: SidebarProps) => {
 									showArrow>
 									<Link
 										href='/dashboard/users'
-										className='text-2xl text-center w-fit hover:text-accent-foreground'>
+										className='text-2xl text-center w-fit hover:text-accent-foreground dark:hover:text-accent'>
 										<RxAvatar
 											className='mx-auto text-2xl text-center w-fit'
 											size={70}
