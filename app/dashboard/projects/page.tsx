@@ -12,7 +12,7 @@ const Projects = async () => {
 			<Header pageTitle='Projects' />
 			<main>
 				{data.userRole === 'ADMIN' && <CreateProject />}
-				<ProjectsTable />
+				<ProjectsTable projectsArray={data.projects} />
 			</main>
 		</div>
 	);

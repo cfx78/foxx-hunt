@@ -7,8 +7,6 @@ import TicketsPageFunctions from '@/lib/ServerComponentFunctions/MainPages/Ticke
 const TicketsPage = async () => {
 	const data = await TicketsPageFunctions();
 
-	console.log(data);
-
 	return (
 		<div className='tickets-container'>
 			<Header pageTitle='Tickets' />

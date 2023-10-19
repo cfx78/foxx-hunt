@@ -91,11 +91,11 @@ tbody {
 }
 
 .table-heading {
-	@apply font-semibold text-center;
+	@apply font-semibold text-center flex justify-center items-center;
 }
 
 .table-heading-start {
-	@apply font-semibold text-left;
+	@apply font-semibold text-left flex justify-start items-center w-fit;
 }
 
 @layer base {

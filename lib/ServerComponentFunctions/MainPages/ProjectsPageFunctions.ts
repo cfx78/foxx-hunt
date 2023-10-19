@@ -20,7 +20,17 @@ const ProjectsPageFunctions = async () => {
 
 	const userRole = user?.role;
 
-	return { userRole };
+	const projects = await prisma.project.findMany({
+		include: {
+			tickets: true,
+		},
+
+		orderBy: {
+			createdAt: 'desc',
+		},
+	});
+
+	return { userRole, projects };
 };
 
 export default ProjectsPageFunctions;

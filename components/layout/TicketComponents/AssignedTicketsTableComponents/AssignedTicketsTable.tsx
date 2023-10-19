@@ -1,6 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import AssignedTicketsRow from './AssignedTicketsRow';
+import { TiArrowUnsorted } from 'react-icons/ti';
 
 type AssignedTicketsTableProps = {
 	ticketsArray: {
@@ -9,22 +11,65 @@ type AssignedTicketsTableProps = {
 		status: string;
 		priority: string;
 		createdAt: Date;
+		[key: string]: any;
 	}[];
 };
 
 const AssignedTicketsTable = (props: AssignedTicketsTableProps) => {
+	const [order, setOrder] = useState('asc');
+	const [data, setData] = useState(props.ticketsArray);
+	const sorting = (key: string) => {
+		const sorted = [...props.ticketsArray].sort((a, b) => {
+			if (order === 'asc') {
+				setOrder('desc');
+				return a[key] > b[key] ? 1 : -1;
+			} else {
+				setOrder('asc');
+				return a[key] < b[key] ? 1 : -1;
+			}
+		});
+		setData(sorted);
+	};
 	return (
 		<table>
 			<thead>
 				<tr>
-					<th className='table-heading-start'>Title</th>
-					<th className='table-heading'>Status</th>
-					<th className='table-heading'>Priority</th>
-					<th className='table-heading'>Created</th>
+					<th>
+						<div
+							className='table-heading-start cursor-pointer'
+							onClick={() => sorting('title')}>
+							Title
+							<TiArrowUnsorted />
+						</div>
+					</th>
+					<th>
+						<div
+							className='table-heading cursor-pointer'
+							onClick={() => sorting('status')}>
+							Status
+							<TiArrowUnsorted />
+						</div>
+					</th>
+					<th>
+						<div
+							className='table-heading cursor-pointer'
+							onClick={() => sorting('priority')}>
+							Priority
+							<TiArrowUnsorted />
+						</div>
+					</th>
+					<th>
+						<div
+							className='table-heading cursor-pointer'
+							onClick={() => sorting('createdAt')}>
+							Created
+							<TiArrowUnsorted />
+						</div>
+					</th>
 				</tr>
 			</thead>
 			<tbody>
-				{props.ticketsArray.map((ticket) => (
+				{data.map((ticket) => (
 					<AssignedTicketsRow
 						key={ticket.id}
 						id={ticket.id}
