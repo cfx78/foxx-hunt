@@ -22,8 +22,8 @@
 		"framer-motion": "^10.16.4",
 		"hamburger-react": "^2.5.0",
 		"lucide-react": "^0.279.0",
-		"next": "^13.5.5",
-		"next-auth": "^4.23.2",
+		"next": "^13.5.6",
+		"next-auth": "^4.24.3",
 		"next-themes": "^0.2.1",
 		"prisma": "^5.4.2",
 		"react": "latest",
@@ -43,7 +43,7 @@
 		"eslint-config-next": "latest",
 		"postcss": "latest",
 		"tailwindcss": "latest",
-		"tailwindcss-brand-colors": "^0.3.3",
+		"tailwindcss-brand-colors": "^0.3.4",
 		"tailwindcss-debug-screens": "^2.2.1",
 		"typescript": "latest"
 	}

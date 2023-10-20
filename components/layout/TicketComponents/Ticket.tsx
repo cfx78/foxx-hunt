@@ -32,7 +32,7 @@ const Ticket = async (props: TicketProps) => {
 	const usersArray = users.map((user) => {
 		return user.email;
 	});
-
+	console.log(usersArray);
 	return (
 		<div className='w-full max-w-7xl bg-slate-300 dark:bg-slate-700 dark:text-slate-200 rounded-lg shadow-2xl p-10 m-4 mx-auto'>
 			<div className='block w-full lg:text-left lg:gap-8  text-center font-bold mb-6'>
@@ -166,7 +166,7 @@ const Ticket = async (props: TicketProps) => {
 				</h3>
 				<p className='text-lg'>{props.ticket.body}</p>
 			</div>
-			{user.role !== 'ADMIN' ? (
+			{user.role === 'ADMIN' ? (
 				<div className='block w-full text-center  text-2xl font-bold mb-6'>
 					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
 						Update Ticket
@@ -176,7 +176,7 @@ const Ticket = async (props: TicketProps) => {
 							priority={props.ticket.priority as TicketPriority}
 							status={props.ticket.status as TicketStatus}
 							ticketId={props.ticket.id}
-							userEmail={props.ticket.assignedTo?.email as string}
+							userEmail={user.email}
 							title={props.ticket.title}
 							key={props.ticket.id}
 							usersArray={usersArray}

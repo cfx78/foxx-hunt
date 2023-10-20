@@ -12,12 +12,7 @@ import {
 } from '@/components/ui/dialog';
 import { TicketStatus, TicketPriority } from '@prisma/client';
 import { Button } from '../../ui/button';
-import {
-	Accordion,
-	AccordionItem,
-	Select,
-	SelectItem,
-} from '@nextui-org/react';
+import { Accordion, AccordionItem } from '@nextui-org/react';
 
 type Props = {
 	priority: TicketPriority;
@@ -64,11 +59,11 @@ const UpdateTicket = (props: Props) => {
 		setIsUpdated(true);
 		setTimeout(() => {
 			setIsUpdated(false);
-		}, 5000);
+		}, 3000);
 
 		setTimeout(() => {
 			window.location.reload();
-		}, 8000);
+		}, 3000);
 	};
 
 	return (
@@ -89,99 +84,102 @@ const UpdateTicket = (props: Props) => {
 					</DialogDescription>
 				</DialogHeader>
 
-				<div className='w-full h-full'>
-					<form onSubmit={handleSubmit}>
-						<Accordion isCompact>
-							<AccordionItem
-								key='status'
-								aria-label='Update Status Accordion Item'
-								title='Update Status'>
-								<label
-									htmlFor='status'
-									className='block mb-2 text-sm font-medium'>
-									Choose a status
-								</label>
-								<select
-									className='w-full border text-sm rounded-lg p-2 block'
-									value={update.status}
-									onChange={(e) => {
-										setUpdate({
-											...update,
-											status: e.target
-												.value as TicketStatus,
-										});
-										console.log(update.status);
-									}}>
-									{Object.keys(TicketStatus).map((status) => (
-										<option value={status}>{status}</option>
-									))}
-								</select>
-							</AccordionItem>
-							<AccordionItem
-								key='priority'
-								aria-label='Update Priority Accordion Item'
-								title='Update Priority'>
-								<label
-									htmlFor='priority'
-									className='block mb-2 text-sm font-medium'>
-									Choose a priority
-								</label>
-								<select
-									id='priority'
-									className='w-full border text-sm rounded-lg p-2 block'
-									value={update.priority}
-									onChange={(e) => {
-										setUpdate({
-											...update,
-											priority: e.target
-												.value as TicketPriority,
-										});
-										console.log(update.priority);
-									}}>
-									{Object.keys(TicketPriority).map(
-										(priority) => (
-											<option value={priority}>
-												{priority}
-											</option>
-										),
-									)}
-								</select>
-							</AccordionItem>
-							<AccordionItem
-								key='assignment'
-								aria-label='Update Assignment Accordion Item'
-								title='Update Assignment'>
-								<label
-									htmlFor='assignment'
-									className='block mb-2 text-sm font-medium'>
-									Choose the email associated with the user
-									you are assigning
-								</label>
-								<select
-									id='assignment'
-									className='w-full border text-sm rounded-lg p-2 block'
-									value={update.userEmail}
-									onChange={(e) => {
-										setUpdate({
-											...update,
-											userEmail: e.target.value,
-										});
-										console.log(update.userEmail);
-									}}>
-									{props.usersArray.map((user) => (
-										<option value={user}>{user}</option>
-									))}
-								</select>
-							</AccordionItem>
-						</Accordion>
-						<Button
-							className='w-full rounded-t-none'
-							type='submit'
-							variant='ghost'>
-							Submit
-						</Button>
-					</form>
-				</div>
+				<form onSubmit={handleSubmit}>
+					<Accordion isCompact>
+						<AccordionItem
+							key='status'
+							aria-label='Update Status Accordion Item'
+							title='Update Status'>
+							<label
+								htmlFor='status'
+								className='block mb-2 text-sm font-medium'>
+								Choose a status
+							</label>
+							<select
+								className='w-full border text-sm rounded-lg p-2 block'
+								value={update.status}
+								onChange={(e) => {
+									setUpdate({
+										...update,
+										status: e.target.value as TicketStatus,
+									});
+									console.log(update.status);
+								}}>
+								{Object.keys(TicketStatus).map(
+									(status, index) => (
+										<option key={index} value={status}>
+											{status}
+										</option>
+									),
+								)}
+							</select>
+						</AccordionItem>
+						<AccordionItem
+							key='priority'
+							aria-label='Update Priority Accordion Item'
+							title='Update Priority'>
+							<label
+								htmlFor='priority'
+								className='block mb-2 text-sm font-medium'>
+								Choose a priority
+							</label>
+							<select
+								id='priority'
+								className='w-full border text-sm rounded-lg p-2 block'
+								value={update.priority}
+								onChange={(e) => {
+									setUpdate({
+										...update,
+										priority: e.target
+											.value as TicketPriority,
+									});
+									console.log(update.priority);
+								}}>
+								{Object.keys(TicketPriority).map(
+									(priority, index) => (
+										<option key={index} value={priority}>
+											{priority}
+										</option>
+									),
+								)}
+							</select>
+						</AccordionItem>
+						<AccordionItem
+							key='assignment'
+							aria-label='Update Assignment Accordion Item'
+							title='Update Assignment'>
+							<label
+								htmlFor='assignment'
+								className='block mb-2 text-sm font-medium'>
+								Choose the email associated with the user you
+								are assigning
+							</label>
+							<select
+								id='assignment'
+								className='w-full border text-sm rounded-lg p-2 block'
+								value={update.userEmail}
+								onChange={(e) => {
+									setUpdate({
+										...update,
+										userEmail: e.target.value,
+									});
+								}}>
+								{props.usersArray.map((user) => (
+									<option value={update.userEmail}>
+										{user}
+									</option>
+								))}
+							</select>
+						</AccordionItem>
+					</Accordion>
+					<Button
+						className='w-full rounded-t-none'
+						type='submit'
+						variant='ghost'>
+						Submit
+					</Button>
+				</form>
+
 				{isUpdated && (
 					<div className='w-full h-full text-success'>
 						<p className='text-center text-lg font-bold'>

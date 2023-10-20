@@ -46,6 +46,10 @@ const AddComment = (props: Props) => {
 			userEmail: props.userEmail,
 			ticketId: props.ticketId,
 		});
+
+		setTimeout(() => {
+			window.location.reload();
+		}, 3000);
 	};
 
 	return (

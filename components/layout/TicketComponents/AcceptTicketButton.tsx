@@ -75,7 +75,7 @@ const AcceptTicketButton = (props: Props) => {
 					className='w-full rounded-t-none'
 					type='submit'
 					variant='ghost'
-					onSubmit={handleSubmit}>
+					onClick={handleSubmit}>
 					Accept
 				</Button>
 				{isUpdated && (
