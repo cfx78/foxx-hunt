@@ -122,6 +122,7 @@ const Popup = (props: Props) => {
 								}
 							/>
 							<Button
+								type='submit'
 								className='w-full rounded-t-none'
 								variant='ghost'>
 								Submit

@@ -32,7 +32,7 @@ const Ticket = async (props: TicketProps) => {
 	const usersArray = users.map((user) => {
 		return user.email;
 	});
-	console.log(usersArray);
+
 	return (
 		<div className='w-full max-w-7xl bg-slate-300 dark:bg-slate-700 dark:text-slate-200 rounded-lg shadow-2xl p-10 m-4 mx-auto'>
 			<div className='block w-full lg:text-left lg:gap-8  text-center font-bold mb-6'>

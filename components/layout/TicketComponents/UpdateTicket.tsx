@@ -103,7 +103,6 @@ const UpdateTicket = (props: Props) => {
 										...update,
 										status: e.target.value as TicketStatus,
 									});
-									console.log(update.status);
 								}}>
 								{Object.keys(TicketStatus).map(
 									(status, index) => (
@@ -164,8 +163,10 @@ const UpdateTicket = (props: Props) => {
 										userEmail: e.target.value,
 									});
 								}}>
-								{props.usersArray.map((user) => (
-									<option value={update.userEmail}>
+								{props.usersArray.map((user, index) => (
+									<option
+										key={index}
+										value={update.userEmail}>
 										{user}
 									</option>
 								))}

@@ -24,7 +24,7 @@ const Sidebar = (props: SidebarProps) => {
 					<small className='text-sm text-center'>Foxx Hunt </small>
 				</div>
 
-				<div className='grid w-full pt-32 place-content-center'>
+				<div className='grid w-full pt-32 place-content-center text-warning dark:text-primary-300'>
 					<ModeToggle />
 				</div>
 				<div className='flex flex-col items-center justify-center '>
@@ -98,7 +98,7 @@ const Sidebar = (props: SidebarProps) => {
 						)}
 					</ul>
 				</div>
-				<div className='flex items-center justify-center w-full pt-24'>
+				<div className='flex items-center justify-center w-full pt-24 text-primary-900 '>
 					<Logout />
 				</div>
 			</nav>

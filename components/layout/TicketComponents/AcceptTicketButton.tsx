@@ -39,7 +39,6 @@ const AcceptTicketButton = (props: Props) => {
 		});
 
 		const data = await response.json();
-		console.log(data);
 
 		setIsUpdated(true);
 		setTimeout(() => {
@@ -66,7 +65,7 @@ const AcceptTicketButton = (props: Props) => {
 						Warning you are about to accept this ticket
 					</DialogTitle>
 					<DialogDescription>
-						Are you sure you want to accept the '{props.title}'
+						Are you sure you want to accept the {`'${props.title}'`}
 						ticket?
 					</DialogDescription>
 				</DialogHeader>
