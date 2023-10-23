@@ -13,9 +13,15 @@ const TicketsPageFunctions = async () => {
 		},
 	});
 
+	const userId = user?.id;
+
+	const projects = await prisma.project.findMany();
+
+	const projectNames = projects.map((project) => project.name);
+
 	const createdUserTickets = await prisma.ticket.findMany({
 		where: {
-			createdByUserId: user?.id,
+			createdByUserId: userId,
 		},
 
 		include: {
@@ -37,7 +43,7 @@ const TicketsPageFunctions = async () => {
 		},
 	});
 
-	return { createdUserTickets, assignedUserTickets };
+	return { createdUserTickets, assignedUserTickets, userId, projectNames };
 };
 
 export default TicketsPageFunctions;

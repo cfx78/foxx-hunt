@@ -1,6 +1,7 @@
 import './styles.modules.css';
 import Header from '@/components/layout/Header';
 import AssignedTicketsTable from '@/components/layout/TicketComponents/AssignedTicketsTableComponents/AssignedTicketsTable';
+import CreateTicket from '@/components/layout/TicketComponents/CreateTicket';
 import CreatedTicketsTable from '@/components/layout/TicketComponents/CreatedTicketsTableComponents/CreatedTicketsTable';
 import TicketsPageFunctions from '@/lib/ServerComponentFunctions/MainPages/TicketsPageFunctions';
 
@@ -11,6 +12,12 @@ const TicketsPage = async () => {
 		<div className='tickets-container'>
 			<Header pageTitle='Tickets' />
 			<main>
+				<section>
+					<CreateTicket
+						userID={data.userId as string}
+						projects={data.projectNames as []}
+					/>
+				</section>
 				<section>
 					<h1 className='w-full text-3xl text-center pb-3'>
 						Assigned Tickets

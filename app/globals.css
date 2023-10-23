@@ -48,9 +48,6 @@
 		--ring: 192 92% 37% /* cyan-600 */;
 	}
 }
-main {
-	@apply flex flex-col justify-center  w-full h-full px-4 py-32 mx-auto mt-16 lg:pl-20 max-w-7xl rounded-t-lg lg:py-64;
-}
 
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 .no-scrollbar::-webkit-scrollbar {
@@ -61,41 +58,6 @@ main {
 .no-scrollbar {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
-}
-section {
-	@apply py-6;
-}
-table {
-	@apply w-full table-auto max-w-7xl;
-}
-
-thead {
-	@apply lg:text-lg font-semibold uppercase text-gray-950 rounded-md bg-gray-50;
-}
-
-th,
-td {
-	@apply p-2 lg:whitespace-nowrap text-center;
-}
-
-tbody {
-	@apply text-sm divide-y divide-gray-100;
-}
-
-.td-wrapper {
-	@apply text-lg dark:text-gray-300;
-}
-
-.td-wrapper-start {
-	@apply text-lg dark:text-gray-300 text-left;
-}
-
-.table-heading {
-	@apply font-semibold text-center flex justify-center items-center;
-}
-
-.table-heading-start {
-	@apply font-semibold text-left flex justify-start items-center w-fit;
 }
 
 @layer base {

@@ -66,7 +66,10 @@ export default async function Home() {
 							registration={true}
 						/>
 					</div>
-					<CardFooter></CardFooter>
+					<CardFooter className='flex items-center w-full h-full py-5 justify-evenly'>
+						<SignInButton UserDemo />
+						<SignInButton AdminDemo />
+					</CardFooter>
 				</CardContent>
 			</Card>
 		</main>

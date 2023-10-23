@@ -1,4 +1,3 @@
-import '../globals.css';
 import './styles.modules.css';
 import type { Metadata } from 'next';
 import { Providers } from '../providers';
