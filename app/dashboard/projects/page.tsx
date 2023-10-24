@@ -6,7 +6,6 @@ import ProjectsPageFunctions from '@/lib/ServerComponentFunctions/MainPages/Proj
 
 const Projects = async () => {
 	const data = await ProjectsPageFunctions();
-	console.log(data.userProjects);
 
 	return (
 		<div className='projects-container'>
