@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import ChangeUserRole from './ChangeUserRole';
+import AddToProjectButton from '../ProjectComponents/AddToProject';
+import prisma from '@/lib/db';
 
 type UserProfileProps = {
 	user: UserInformation;
 };
 
-const UserProfile = (props: UserProfileProps) => {
+const UserProfile = async (props: UserProfileProps) => {
+	const projects = await prisma.project.findMany();
+
 	return (
 		<div className='bg-white w-full max-w-2xl overflow-hidden shadow rounded-lg border'>
 			<div className='px-4 py-5 sm:px-6'>
@@ -38,7 +42,7 @@ const UserProfile = (props: UserProfileProps) => {
 						<dt className='text-sm font-medium text-gray-500'>
 							Role
 						</dt>
-						<dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 flex justify-between items-center '>
+						<dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 flex flex-col gap-4 justify-between items-center '>
 							{props.user.role}
 							<ChangeUserRole
 								userEmail={props.user.email}
@@ -52,52 +56,58 @@ const UserProfile = (props: UserProfileProps) => {
 						<dt className='text-sm font-medium text-gray-500'>
 							Current Projects
 						</dt>
-						{props.user.projects.map((project) => (
-							<dd
-								key={project.id}
-								className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-								<div>
+						<dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 flex flex-col gap-4 justify-between items-center '>
+							<div className='overflow-y-auto px-5 space-y-5 pb-20 flex items-center flex-col flex-grow max-h-24'>
+								{props.user.projects.map((project) => (
 									<Link
+										key={project.id}
 										href={`/dashboard/projects/${project.id}`}
 										className='text-blue-500 hover:text-blue-700'>
 										{project.name}
 									</Link>
-								</div>
-							</dd>
-						))}
+								))}
+							</div>
+							<AddToProjectButton
+								userId={props.user.id}
+								projectNames={projects.map(
+									(project) => project.name,
+								)}
+							/>
+						</dd>
 					</div>
 					<div className='py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
 						<dt className='text-sm font-medium text-gray-500'>
 							Created Tickets
 						</dt>
-						<dd className='mt-1 text-sm space-x-8 flex items-center w-full max-w-md text-gray-900 sm:mt-0 sm:col-span-2'>
-							{props.user.ticketsCreated.map((ticket) => (
-								<Link
-									key={ticket.id}
-									href={`/dashboard/tickets/${ticket.id}`}
-									className='text-blue-500 hover:text-blue-700'>
-									{ticket.title}
-								</Link>
-							))}
+						<dd className='mt-1 text-sm  w-full max-w-lg text-gray-900 sm:mt-0 sm:col-span-2 '>
+							<div className='overflow-y-auto  space-y-5 pb-20 flex items-center flex-col flex-grow max-h-24'>
+								{props.user.ticketsCreated.map((ticket) => (
+									<Link
+										key={ticket.id}
+										href={`/dashboard/tickets/${ticket.id}`}
+										className='text-blue-500 hover:text-blue-700'>
+										{ticket.title}
+									</Link>
+								))}
+							</div>
 						</dd>
 					</div>
 					<div className='py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
 						<dt className='text-sm font-medium text-gray-500'>
 							Assigned Tickets
 						</dt>
-						{props.user.ticketsAssigned.map((ticket) => (
-							<dd
-								key={ticket.id}
-								className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-								<div>
+						<dd className='mt-1 text-sm  w-full max-w-lg text-gray-900 sm:mt-0 sm:col-span-2 '>
+							<div className='overflow-y-auto  space-y-5 pb-20 flex items-center flex-col flex-grow max-h-24'>
+								{props.user.ticketsAssigned.map((ticket) => (
 									<Link
+										key={ticket.id}
 										href={`/dashboard/tickets/${ticket.id}`}
-										className='text-blue-500 hover:text-blue-700'>
+										className='text-blue-500 hover:text-blue-700 max-w-fit'>
 										{ticket.title}
 									</Link>
-								</div>
-							</dd>
-						))}
+								))}
+							</div>
+						</dd>
 					</div>
 				</dl>
 			</div>

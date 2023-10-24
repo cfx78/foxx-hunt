@@ -20,6 +20,7 @@ const ProjectPage = async ({ params: { projectid } }: ProjectPageParams) => {
 	};
 
 	const data = await ProjectPageFunctions(props);
+
 	return (
 		<div className='project-container'>
 			<Header pageTitle={data.project?.name as string} />

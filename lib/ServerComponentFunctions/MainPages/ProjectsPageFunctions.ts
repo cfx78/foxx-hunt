@@ -16,10 +16,21 @@ const ProjectsPageFunctions = async () => {
 		where: {
 			email: userEmail as string,
 		},
+		include: {
+			projects: {
+				include: {
+					tickets: true,
+				},
+			},
+		},
 	});
 
-	const userRole = user?.role;
+	if (user == null) {
+		redirect('/');
+	}
 
+	const userRole = user.role;
+	const userProjects = user.projects;
 	const projects = await prisma.project.findMany({
 		include: {
 			tickets: true,
@@ -30,7 +41,7 @@ const ProjectsPageFunctions = async () => {
 		},
 	});
 
-	return { userRole, projects };
+	return { userRole, projects, userProjects };
 };
 
 export default ProjectsPageFunctions;

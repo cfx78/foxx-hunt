@@ -132,7 +132,6 @@ const UpdateTicket = (props: Props) => {
 										priority: e.target
 											.value as TicketPriority,
 									});
-									console.log(update.priority);
 								}}>
 								{Object.keys(TicketPriority).map(
 									(priority, index) => (
@@ -164,9 +163,7 @@ const UpdateTicket = (props: Props) => {
 									});
 								}}>
 								{props.usersArray.map((user, index) => (
-									<option
-										key={index}
-										value={update.userEmail}>
+									<option key={index} value={user}>
 										{user}
 									</option>
 								))}

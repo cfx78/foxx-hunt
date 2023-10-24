@@ -55,5 +55,7 @@ export const UserPageFunctions = async (props: UserPageFunctionsProps) => {
 		updatedAt: user.updatedAt,
 	};
 
+	const projects = await prisma.project.findMany();
+
 	return userInformation;
 };

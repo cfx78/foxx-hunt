@@ -29,6 +29,8 @@ const AddComment = (props: Props) => {
 		ticketId: props.ticketId,
 	});
 
+	const [isUpdated, setIsUpdated] = useState(false);
+
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 
@@ -46,6 +48,12 @@ const AddComment = (props: Props) => {
 			userEmail: props.userEmail,
 			ticketId: props.ticketId,
 		});
+
+		setIsUpdated(true);
+
+		setTimeout(() => {
+			setIsUpdated(false);
+		}, 3000);
 
 		setTimeout(() => {
 			window.location.reload();
@@ -92,6 +100,13 @@ const AddComment = (props: Props) => {
 						</Button>
 					</form>
 				</div>
+				{isUpdated && (
+					<div className='w-full h-full text-success'>
+						<p className='text-center text-lg font-bold'>
+							Comment Added
+						</p>
+					</div>
+				)}
 			</DialogContent>
 		</Dialog>
 	);
