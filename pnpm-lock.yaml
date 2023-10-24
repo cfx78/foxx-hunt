@@ -106,9 +106,6 @@ devDependencies:
   tailwindcss-brand-colors:
     specifier: ^0.3.4
     version: 0.3.4
-  tailwindcss-debug-screens:
-    specifier: ^2.2.1
-    version: 2.2.1(tailwindcss@3.3.3)
   typescript:
     specifier: latest
     version: 5.2.2
@@ -5825,14 +5822,6 @@ packages:
 
   /tailwindcss-brand-colors@0.3.4:
     resolution: {integrity: sha512-L+bKbc3MT0QkC4+4ZR3hAp/lBQ+PpborVpaFlczCUDtAI0HWM0Mv011dkGbOZI4ndwk4DU+GsUqG28uCbGIiEA==}
-    dev: true
-
-  /tailwindcss-debug-screens@2.2.1(tailwindcss@3.3.3):
-    resolution: {integrity: sha512-EMyA0CYBzqcZJHtVDvBfmYzfx3NxuK4qDyVO5wnzcGOrmJsv25D9xPpWefVTORTvhE6pCh90Z1WYnLUKsg3yMw==}
-    peerDependencies:
-      tailwindcss: ^1.0 || ^2.0 || ^3.0.0-alpha.1 || ^3.0
-    dependencies:
-      tailwindcss: 3.3.3
     dev: true
 
   /tailwindcss@3.3.3:

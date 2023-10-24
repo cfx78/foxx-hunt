@@ -79,6 +79,5 @@ module.exports = {
 		nextui(),
 		require('tailwindcss-animate'),
 		require('tailwindcss-brand-colors'),
-		require('tailwindcss-debug-screens'),
 	],
 };

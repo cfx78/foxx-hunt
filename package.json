@@ -44,7 +44,6 @@
 		"postcss": "latest",
 		"tailwindcss": "latest",
 		"tailwindcss-brand-colors": "^0.3.4",
-		"tailwindcss-debug-screens": "^2.2.1",
 		"typescript": "latest"
 	}
 }
