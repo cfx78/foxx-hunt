@@ -47,7 +47,7 @@ const MobileNav = (props: SidebarProps) => {
 						stiffness: 10,
 					},
 				}}
-				className='bg-accent px-24 w-full pb-56 pt-32 h-full rounded  top-0 left-0 fixed z-[200]'>
+				className='bg-accent px-24 w-full pt-9 h-full rounded  top-0 left-0 fixed z-[200]'>
 				<div className='top-0 grid w-full place-content-center text-warning dark:text-primary-300'>
 					<ModeToggle />
 				</div>
