@@ -18,7 +18,7 @@ const MobileNav = (props: SidebarProps) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	return (
-		<div className='top-0 left-0 fixed z-50'>
+		<div className='fixed top-0 left-0 z-50'>
 			<div>
 				<Hamburger
 					toggled={isMenuOpen}
@@ -48,10 +48,10 @@ const MobileNav = (props: SidebarProps) => {
 					},
 				}}
 				className='bg-accent px-24 w-full pb-56 pt-32 h-full rounded  top-0 left-0 fixed z-[200]'>
-				<div className='w-full grid place-content-center  top-0'>
+				<div className='top-0 grid w-full place-content-center text-warning dark:text-primary-300'>
 					<ModeToggle />
 				</div>
-				<div className='text-right justify-end top-0 right-0 absolute'>
+				<div className='absolute top-0 right-0 justify-end text-right'>
 					<div className='z-50'>
 						<Hamburger
 							toggled={isMenuOpen}
@@ -60,9 +60,9 @@ const MobileNav = (props: SidebarProps) => {
 					</div>
 				</div>
 
-				<div className='w-full text-center flex-col md:text-2xl justify-evenly items-center mx-auto '>
+				<div className='flex-col items-center w-full mx-auto text-center md:text-2xl justify-evenly '>
 					<motion.span
-						className='flex z-50 items-center justify-center w-full py-7'
+						className='z-50 flex items-center justify-center w-full py-7'
 						viewport={{ once: true }}
 						initial={{ opacity: 0, y: -50 }}
 						animate={
@@ -143,7 +143,7 @@ const MobileNav = (props: SidebarProps) => {
 						<Link
 							onClick={() => setIsMenuOpen(false)}
 							href='/dashboard'
-							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
+							className='w-full text-2xl text-center md:text-5xl hover:text-primary'>
 							Dashboard
 						</Link>
 					</motion.li>
@@ -164,7 +164,7 @@ const MobileNav = (props: SidebarProps) => {
 						<Link
 							onClick={() => setIsMenuOpen(false)}
 							href='/dashboard/projects'
-							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
+							className='w-full text-2xl text-center md:text-5xl hover:text-primary'>
 							Projects
 						</Link>
 					</motion.li>
@@ -185,7 +185,7 @@ const MobileNav = (props: SidebarProps) => {
 						<Link
 							onClick={() => setIsMenuOpen(false)}
 							href='/dashboard/tickets'
-							className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
+							className='w-full text-2xl text-center md:text-5xl hover:text-primary'>
 							Tickets
 						</Link>
 					</motion.li>
@@ -208,15 +208,33 @@ const MobileNav = (props: SidebarProps) => {
 							<Link
 								onClick={() => setIsMenuOpen(false)}
 								href='/dashboard/users'
-								className='w-full md:text-5xl text-2xl text-center hover:text-primary'>
+								className='w-full text-2xl text-center md:text-5xl hover:text-primary'>
 								Users
 							</Link>
 						</motion.li>
 					)}
-					<motion.li className=''>
+					<motion.li className=' text-primary-900'>
 						<Logout />
 					</motion.li>
 				</motion.ul>
+				<motion.div
+					initial={{ opacity: 0, y: 50 }}
+					animate={
+						isMenuOpen
+							? { opacity: 1, y: 0 }
+							: { opacity: 0, y: 50 }
+					}
+					transition={{
+						duration: 0.75,
+						ease: 'easeInOut',
+						type: 'spring',
+						stiffness: 100,
+					}}
+					exit={{ opacity: 0, y: 50 }}
+					className='flex flex-col items-center justify-center w-full gap-1 pt-10'>
+					<div className='text-6xl '>🦊</div>
+					<small className='text-lg text-center'>Foxx Hunt </small>
+				</motion.div>
 			</motion.nav>
 		</div>
 	);

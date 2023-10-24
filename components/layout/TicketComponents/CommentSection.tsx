@@ -7,18 +7,18 @@ type CommentSectionProps = {
 
 const CommentSection = (props: CommentSectionProps) => {
 	return (
-		<div className='bg-transparent p-4 rounded-lg shadow-md'>
+		<article className='p-4 transition border rounded-lg shadow-sm bg-stone-300 dark:border-gray-100 dark:bg-card hover:shadow-lg sm:p-6'>
 			{props.name ? (
 				<>
-					<h3 className='text-sm  font-bold'>{props.name}</h3>
+					<h3 className='text-sm font-bold'>{props.name}</h3>
 					<small className='text-xs'>{props.email}</small>
 				</>
 			) : (
 				<h3 className='text-sm font-bold'>{props.email}</h3>
 			)}
-			<p className=' text-xs mb-2'>{props.date.toDateString()}</p>
-			<p className=' text-xs'>{props.comment}</p>
-		</div>
+			<p className='mb-2 text-xs '>{props.date.toDateString()}</p>
+			<p className='text-lg '>{props.comment}</p>
+		</article>
 	);
 };
 

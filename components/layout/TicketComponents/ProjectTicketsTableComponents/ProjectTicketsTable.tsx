@@ -36,7 +36,7 @@ const ProjectTicketsTable = (props: TicketsTableProps) => {
 					<tr>
 						<th>
 							<div
-								className='table-heading-start cursor-pointer'
+								className='cursor-pointer table-heading-start'
 								onClick={() => sorting('title')}>
 								Title
 								<TiArrowUnsorted />
@@ -44,7 +44,7 @@ const ProjectTicketsTable = (props: TicketsTableProps) => {
 						</th>
 						<th>
 							<div
-								className='table-heading cursor-pointer'
+								className='cursor-pointer table-heading'
 								onClick={() => sorting('status')}>
 								Status
 								<TiArrowUnsorted />
@@ -52,15 +52,15 @@ const ProjectTicketsTable = (props: TicketsTableProps) => {
 						</th>
 						<th>
 							<div
-								className='table-heading cursor-pointer'
+								className='cursor-pointer table-heading'
 								onClick={() => sorting('priority')}>
 								Priority
 								<TiArrowUnsorted />
 							</div>
 						</th>
-						<th>
+						<th className='hidden lg:block'>
 							<div
-								className='table-heading cursor-pointer'
+								className='hidden cursor-pointer table-heading lg:block'
 								onClick={() => sorting('createdAt')}>
 								Created
 								<TiArrowUnsorted />

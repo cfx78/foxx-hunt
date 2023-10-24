@@ -57,9 +57,9 @@ const ProjectsTable = (props: ProjectsTableProps) => {
 								<TiArrowUnsorted />
 							</div>
 						</th>
-						<th>
+						<th className='hidden lg:block'>
 							<div
-								className='table-heading cursor-pointer'
+								className='table-heading cursor-pointer hidden lg:block'
 								onClick={() => sorting('updatedAt')}>
 								Updated
 								<TiArrowUnsorted />

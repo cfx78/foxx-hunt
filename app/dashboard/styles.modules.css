@@ -11,22 +11,22 @@
 }
 
 main {
-	@apply flex flex-col justify-center  w-full h-full px-4 py-32 mx-auto mt-16 lg:pl-20 max-w-7xl rounded-t-lg lg:py-64;
+	@apply flex flex-col justify-center w-full h-full px-4 py-32 mx-auto rounded-t-lg lg:mt-16 lg:pl-20 max-w-7xl lg:py-64;
 }
 section {
 	@apply py-6;
 }
 table {
-	@apply w-full table-auto lg:max-w-7xl;
+	@apply w-full max-w-xs mx-auto border-1.5 table-auto lg:max-w-7xl border-border;
 }
 
 thead {
-	@apply lg:text-lg font-semibold uppercase text-gray-950 rounded-md bg-gray-50;
+	@apply font-semibold uppercase rounded-md lg:text-lg text-gray-950 bg-gray-50;
 }
 
 th,
 td {
-	@apply p-2 lg:whitespace-nowrap text-center;
+	@apply p-2 text-center lg:whitespace-nowrap;
 }
 
 tbody {
@@ -38,13 +38,13 @@ tbody {
 }
 
 .td-wrapper-start {
-	@apply text-lg dark:text-gray-300 text-left;
+	@apply text-lg text-left dark:text-gray-300;
 }
 
 .table-heading {
-	@apply font-semibold text-center flex justify-center items-center;
+	@apply flex items-center justify-center font-semibold text-center;
 }
 
 .table-heading-start {
-	@apply font-semibold text-left flex justify-start items-center w-fit;
+	@apply flex items-center justify-start font-semibold text-left w-fit;
 }

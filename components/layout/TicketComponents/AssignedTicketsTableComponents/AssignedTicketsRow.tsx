@@ -56,8 +56,8 @@ const AssignedTicketsRow = (props: AssignedTicketsRowProps) => {
 						</span>
 					)}
 				</td>
-				<td>
-					<div className='td-wrapper'>
+				<td className='hidden lg:block'>
+					<div className='td-wrapper hidden lg:block'>
 						{props.createdAt.toDateString()}
 					</div>
 				</td>

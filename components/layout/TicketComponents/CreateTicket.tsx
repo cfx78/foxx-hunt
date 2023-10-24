@@ -162,7 +162,7 @@ const CreateTicket = (props: CreateTicketProps) => {
 						))}
 					</select>
 				</div>
-				<button className='block p-4 mx-auto text-lg text-gray-200 uppercase transition ease-in-out rounded bg-secondary-400 hover:bg-secondary-600 '>
+				<button className='block px-2 py-4 w-full max-w-sm mx-auto text-lg text-gray-200 uppercase transition ease-in-out rounded bg-secondary-400 hover:bg-secondary-600 '>
 					Submit
 				</button>
 			</form>

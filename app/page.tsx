@@ -23,7 +23,9 @@ export default async function Home() {
 				<CardHeader>
 					<CardTitle className=' main-card-title'>
 						<p>
-							Foxx <span className='text-4xl'>🦊</span> Hunt
+							Foxx
+							<span className='p-3 text-2xl lg:text-4xl'>🦊</span>
+							Hunt
 						</p>
 					</CardTitle>
 					<CardDescription className='pt-2 text-center'>
@@ -32,7 +34,7 @@ export default async function Home() {
 				</CardHeader>
 				<CardContent className='text-center'>
 					<p>sign in</p>
-					<div className='flex items-center w-full h-full py-5 justify-evenly'>
+					<div className='flex items-center w-full h-full gap-2 py-5 justify-evenly'>
 						<SignInButton Google />
 						<SignInButton Github />
 						<Popup
@@ -54,7 +56,7 @@ export default async function Home() {
 						</div>
 					</div>
 					<p className='pt-4'>sign up</p>
-					<div className='flex items-center w-full h-full py-5 justify-evenly'>
+					<div className='flex items-center w-full h-full gap-2 py-5 justify-evenly'>
 						<SignInButton Google />
 						<SignInButton Github />
 						<Popup
@@ -66,7 +68,7 @@ export default async function Home() {
 							registration={true}
 						/>
 					</div>
-					<CardFooter className='flex items-center w-full h-full py-5 justify-evenly'>
+					<CardFooter className='flex items-center w-full h-full gap-4 py-5 justify-evenly'>
 						<SignInButton UserDemo />
 						<SignInButton AdminDemo />
 					</CardFooter>

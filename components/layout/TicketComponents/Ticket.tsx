@@ -34,192 +34,194 @@ const Ticket = async (props: TicketProps) => {
 	});
 
 	return (
-		<div className='w-full max-w-7xl bg-slate-300 dark:bg-slate-700 dark:text-slate-200 rounded-lg shadow-2xl p-10 m-4 mx-auto'>
-			<div className='block w-full lg:text-left lg:gap-8  text-center font-bold mb-6'>
-				<h2 className='text-4xl underline underline-offset-4 dark:decoration-slate-900'>
-					Title
-				</h2>
-				<p className='text-2xl'>{props.ticket.title}</p>
-			</div>
-			<div className='lg:w-full lg lg:grid lg:grid-cols-2'>
-				<div className='block w-full text-center  text-2xl font-bold mb-6'>
-					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
+		<div className='flow-root px-4 py-10 border border-gray-100 rounded-lg shadow-lg dark:border-gray-700 bg-slate-300 dark:bg-slate-700'>
+			<dl className='-my-3 text-lg divide-y divide-gray-100 dark:divide-gray-700'>
+				<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+					<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
+						Title
+					</dt>
+					<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
+						{props.ticket.title}
+					</dd>
+				</div>
+				<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+					<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
 						Status
-					</h3>
+					</dt>
 					{props.ticket.status === 'DONE' && (
-						<p className='text-lg text-success'>
-							{props.ticket.status}
-						</p>
+						<dd className=' sm:col-span-2 text-success'>Closed</dd>
 					)}
 					{props.ticket.status === 'IN_PROGRESS' && (
-						<p className='text-lg text-warning'>
+						<dd className='sm:col-span-2 text-warning'>
 							{props.ticket.status}
-						</p>
+						</dd>
 					)}
 					{props.ticket.status === 'OPEN' && (
-						<p className='text-lg text-danger'>
+						<dd className='sm:col-span-2 text-danger'>
 							{props.ticket.status}
-						</p>
+						</dd>
 					)}
 				</div>
-				<div className='block w-full text-center  text-2xl font-bold mb-6'>
-					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
+				<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+					<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
 						Priority
-					</h3>
+					</dt>
 					{props.ticket.priority === 'LOW' && (
-						<p className='text-lg text-success'>
-							{props.ticket.priority}
-						</p>
+						<dd className='sm:col-span-2 text-success'>Low</dd>
 					)}
 					{props.ticket.priority === 'MEDIUM' && (
-						<p className='text-lg text-warning'>
-							{props.ticket.priority}
-						</p>
+						<dd className='sm:col-span-2 text-warning'>Medium</dd>
 					)}
 					{props.ticket.priority === 'HIGH' && (
-						<p className='text-lg text-danger'>
-							{props.ticket.priority}
-						</p>
+						<dd className='sm:col-span-2 text-danger'>High</dd>
 					)}
 				</div>
-				<div className='block w-full text-center  text-2xl font-bold mb-6'>
-					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
+				<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+					<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
 						Type
-					</h3>
+					</dt>
 					{props.ticket.type === 'TASK' && (
-						<p className='text-lg text-success'>
-							{props.ticket.type}
-						</p>
+						<dd className='sm:col-span-2 text-success'>Task</dd>
 					)}
 					{props.ticket.type === 'FEATURE' && (
-						<p className='text-lg text-warning'>
-							{props.ticket.type}
-						</p>
+						<dd className='sm:col-span-2 text-warning'>Feature</dd>
 					)}
 					{props.ticket.type === 'BUG' && (
-						<p className='text-lg text-danger'>
-							{props.ticket.type}
-						</p>
+						<dd className='sm:col-span-2 text-danger'>Bug</dd>
 					)}
 				</div>
-				<div className='block w-full text-center  text-2xl font-bold mb-6'>
-					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
+				<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+					<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
 						Project
-					</h3>
-					<p className='text-lg'>{props.ticket.project.name}</p>
+					</dt>
+					<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
+						{props.ticket.project.name}
+					</dd>
 				</div>
-				<div className='block w-full text-center  text-2xl font-bold mb-6'>
-					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
+				<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+					<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
 						Created By
-					</h3>
-					<ul>
-						<li className='text-lg'>
-							{props.ticket.createdBy.name &&
-								props.ticket.createdBy.name}
-						</li>
-						<li className='text-lg'>
-							{props.ticket.createdBy.email &&
-								props.ticket.createdBy.email}
-						</li>
-					</ul>
+					</dt>
+					<div className='flex flex-col'>
+						{props.ticket.createdBy.name && (
+							<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
+								{props.ticket.createdBy.name}
+							</dd>
+						)}
+						{props.ticket.createdBy.email && (
+							<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
+								{props.ticket.createdBy.email}
+							</dd>
+						)}
+					</div>
 				</div>
-				<div className='block w-full text-center  text-2xl font-bold mb-6'>
-					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
+				<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+					<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
 						Assigned To
-					</h3>
-					{(props.ticket.assignedTo && (
-						<ul>
-							{props.ticket.assignedTo?.name && (
-								<li className='text-lg'>
-									{props.ticket.assignedTo?.name}
-								</li>
-							)}
-							{props.ticket.assignedTo?.email && (
-								<li className='text-lg'>
-									{props.ticket.assignedTo?.email}
-								</li>
-							)}
-						</ul>
-					)) ||
-						'Not Assigned'}
+					</dt>
+					<div className='flex flex-col'>
+						{(props.ticket.assignedTo && (
+							<>
+								{props.ticket.assignedTo?.name && (
+									<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
+										{props.ticket.assignedTo?.name}
+									</dd>
+								)}
+								{props.ticket.assignedTo?.email && (
+									<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
+										{props.ticket.assignedTo?.email}
+									</dd>
+								)}
+							</>
+						)) ||
+							'Not Assigned'}
+					</div>
 				</div>
-				<div className='block w-full text-center  text-2xl font-bold mb-6'>
-					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
+				<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+					<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
 						Created At
-					</h3>
-					<p className='text-lg'>
+					</dt>
+					<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
 						{props.ticket.createdAt.toDateString()}
-					</p>
+					</dd>
 				</div>
-				<div className='block w-full text-center  text-2xl font-bold mb-6'>
-					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
+				<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+					<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
 						Updated At
-					</h3>
-					<p className='text-lg'>
+					</dt>
+					<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
 						{props.ticket.updatedAt.toDateString()}
-					</p>
-				</div>
-			</div>
-			<div className='block w-full text-center  text-2xl font-bold mb-6'>
-				<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
-					Body
-				</h3>
-				<p className='text-lg'>{props.ticket.body}</p>
-			</div>
-			{user.role === 'ADMIN' ? (
-				<div className='block w-full text-center  text-2xl font-bold mb-6'>
-					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
-						Update Ticket
-					</h3>
-					<div className='w-full flex justify-center items-center flex-col'>
-						<UpdateTicket
-							priority={props.ticket.priority as TicketPriority}
-							status={props.ticket.status as TicketStatus}
-							ticketId={props.ticket.id}
-							userEmail={user.email}
-							title={props.ticket.title}
-							key={props.ticket.id}
-							usersArray={usersArray}
-						/>
-					</div>
-				</div>
-			) : (
-				<div className='block w-full text-center  text-2xl font-bold mb-6'>
-					<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
-						Accept Ticket
-					</h3>
-					<div className='w-full flex justify-center items-center flex-col'>
-						<AcceptTicketButton
-							title={props.ticket.title}
-							ticketId={props.ticket.id}
-							userId={user.id}
-						/>
-					</div>
-				</div>
-			)}
-
-			<div className='block w-full text-center  text-2xl font-bold mb-6'>
-				<h3 className='text-2xl underline underline-offset-4 dark:decoration-slate-900'>
-					Comments
-				</h3>
-				<div className='w-full flex justify-center items-center flex-col'>
-					<AddComment
-						userEmail={user?.email as string}
-						userName={user?.name as string}
-						ticketId={props.ticket.id}
-					/>
+					</dd>
 				</div>
 
-				{props.ticket.comments.map((comment) => (
-					<CommentSection
-						key={comment.body}
-						name={comment.userName}
-						email={comment.userEmail}
-						date={comment.createdAt}
-						comment={comment.body}
-					/>
-				))}
-			</div>
+				<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+					<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
+						Body
+					</dt>
+					<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
+						{props.ticket.body}
+					</dd>
+				</div>
+				{user.role === 'ADMIN' ? (
+					<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+						<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
+							Update Ticket
+						</dt>
+						<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
+							<UpdateTicket
+								priority={
+									props.ticket.priority as TicketPriority
+								}
+								status={props.ticket.status as TicketStatus}
+								ticketId={props.ticket.id}
+								userEmail={user.email}
+								title={props.ticket.title}
+								key={props.ticket.id}
+								usersArray={usersArray}
+							/>
+						</dd>
+					</div>
+				) : (
+					<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+						<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
+							Accept Ticket
+						</dt>
+						<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
+							<AcceptTicketButton
+								title={props.ticket.title}
+								ticketId={props.ticket.id}
+								userId={user.id}
+							/>
+						</dd>
+					</div>
+				)}
+
+				<div className='grid grid-cols-1 gap-1 p-3 even:bg-gray-50 even:dark:bg-gray-800 sm:grid-cols-3 sm:gap-4'>
+					<dt className='text-3xl font-medium text-gray-900 underline underline-offset-2 dark:text-white'>
+						Comments
+					</dt>
+					<div className='flex flex-col gap-4'>
+						<dd className='text-gray-700 dark:text-gray-200 sm:col-span-2'>
+							<AddComment
+								userEmail={user?.email as string}
+								userName={user?.name as string}
+								ticketId={props.ticket.id}
+							/>
+						</dd>
+
+						{props.ticket.comments.map((comment) => (
+							<dd key={comment.body}>
+								<CommentSection
+									name={comment.userName}
+									email={comment.userEmail}
+									date={comment.createdAt}
+									comment={comment.body}
+								/>
+							</dd>
+						))}
+					</div>
+				</div>
+			</dl>
 		</div>
 	);
 };

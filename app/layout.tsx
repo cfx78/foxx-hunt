@@ -1,8 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Providers } from './providers';
-import { Fragment_Mono } from 'next/font/google';
-const fragMono = Fragment_Mono({ subsets: ['latin'], weight: '400' });
+import { Khand } from 'next/font/google';
+
+const khand = Khand({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
 	title: 'Foxx Hunt',
@@ -17,8 +18,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body
-				className={`debug-screens ${fragMono.className} no-scrollbar`}>
+			<body className={`${khand.className} no-scrollbar`}>
 				<Providers>{children}</Providers>
 			</body>
 		</html>

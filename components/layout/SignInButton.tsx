@@ -43,7 +43,9 @@ const SignInButton = (props: SignInButtonProps) => {
 		<Button
 			variant={'outline'}
 			onClick={handleClick}
-			className='flex items-center justify-between w-40 space-x-1 transition-all focus:bg-white focus:text-black focus:animate-pulse light:focus:bg-black light:focus:text-white'>
+			className={`flex items-center justify-between w-40 space-x-1 transition-all focus:bg-white focus:text-black focus:animate-pulse light:focus:bg-black light:focus:text-white border-2 border-border ${
+				props.UserDemo && 'border-2 border-primary-500 py-7'
+			} ${props.AdminDemo && 'border-2 border-secondary-500 py-7'}`}>
 			{props.Google && (
 				<PiGoogleLogoThin className='w-6 h-6 cursor-pointer' />
 			)}

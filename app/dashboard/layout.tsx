@@ -1,10 +1,9 @@
 import './styles.modules.css';
 import type { Metadata } from 'next';
 import { Providers } from '../providers';
-import { Exo_2 } from 'next/font/google';
+import { Barlow } from 'next/font/google';
 import Navigation from '@/components/layout/NavComponents/Navigation';
-
-const exo2 = Exo_2({ subsets: ['latin'], weight: '400' });
+const barlow = Barlow({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
 	title: 'Foxx Hunt',
@@ -18,7 +17,7 @@ export default async function DashboardLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<body className={`no-scrollbar ${exo2.className}`}>
+		<body className={`no-scrollbar ${barlow.className} tracking-widest`}>
 			<Providers>
 				<Navigation />
 

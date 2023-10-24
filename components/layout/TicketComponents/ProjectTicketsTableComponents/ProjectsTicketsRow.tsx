@@ -57,8 +57,8 @@ const ProjectsTicketsRow = (props: ProjectsTicketsRowProps) => {
 						</span>
 					)}
 				</td>
-				<td>
-					<div className='td-wrapper'>
+				<td className='hidden lg:block '>
+					<div className='hidden td-wrapper lg:block'>
 						{props.createdAt.toDateString()}
 					</div>
 				</td>
@@ -86,7 +86,7 @@ const ProjectsTicketsRow = (props: ProjectsTicketsRowProps) => {
 					}}>
 					<th colSpan={4} className='p-6 '>
 						<Link
-							className='w-full px-4 py-2 text-center border-2 rounded-lg bg-accent text-accent-foreground border-accent-foreground hover:bg-accent-foreground hover:text-accent hover:border-accent transition ease-in-out '
+							className='w-full px-4 py-2 text-center transition ease-in-out border-2 rounded-lg bg-accent text-accent-foreground border-accent-foreground hover:bg-accent-foreground hover:text-accent hover:border-accent '
 							href={`/dashboard/tickets/${props.id}`}>
 							Go to Ticket
 						</Link>

@@ -26,7 +26,7 @@ const UsersRow = (props: UsersRowProps) => {
 					{props.email}
 				</td>
 				<td className='td-wrapper'>{props.tickets}</td>
-				<td className='td-wrapper'>{props.projects}</td>
+				<td className='hidden td-wrapper lg:block'>{props.projects}</td>
 			</tr>
 			{isOpen && (
 				<motion.tr
@@ -51,7 +51,7 @@ const UsersRow = (props: UsersRowProps) => {
 					}}>
 					<th colSpan={4} className='p-6'>
 						<Link
-							className='w-full px-4 py-2 text-center border-2 rounded-lg bg-accent text-accent-foreground border-accent-foreground hover:bg-accent-foreground hover:text-accent hover:border-accent transition ease-in-out'
+							className='w-full px-4 py-2 text-center transition ease-in-out border-2 rounded-lg bg-accent text-accent-foreground border-accent-foreground hover:bg-accent-foreground hover:text-accent hover:border-accent'
 							href={`/dashboard/users/${props.userId}`}>
 							Go to User
 						</Link>

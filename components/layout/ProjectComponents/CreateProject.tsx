@@ -29,19 +29,22 @@ const CreateProject = () => {
 
 	return (
 		<form
-			className='w-full max-w-4xl mx-auto text-center border-5 py-5 px-3 rounded-lg'
+			className='w-full max-w-4xl p-8 m-4 mx-auto bg-white rounded shadow-2xl'
 			onSubmit={handleSubmit}>
-			<h1>Create New Project</h1>
+			<h1 className='block w-full mb-6 text-2xl font-bold text-center text-gray-800'>
+				Create New Project
+			</h1>
 			<input
 				value={createProject}
 				type='text'
 				placeholder='Project Name'
 				name='projectName'
 				onChange={(e) => setCreateProject(e.target.value)}
-				className='my-2 py-2 px-1 bg-transparent
-				border-b-2 w-full rounded-lg'
+				className='px-3 py-2 text-gray-800 border rounded-sm border-primary dark:text-gray-200 mx-auto w-full'
 			/>
-			<button className='w-44 py-2 border-b-3 rounded-full' type='submit'>
+			<button
+				className='block px-2 py-4 w-full max-w-sm mx-auto text-lg text-gray-200 uppercase transition ease-in-out rounded bg-secondary-400 hover:bg-secondary-600  mt-4 '
+				type='submit'>
 				Submit
 			</button>
 			{createProject && (

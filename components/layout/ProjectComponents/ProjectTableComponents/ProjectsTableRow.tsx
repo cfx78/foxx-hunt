@@ -27,8 +27,8 @@ const ProjectsTableRow = (props: ProjectRowProps) => {
 				<td>
 					<div className='td-wrapper'> {props.tickets.length} </div>
 				</td>
-				<td>
-					<div className='td-wrapper '>
+				<td className='hidden lg:block'>
+					<div className='td-wrapper hidden lg:block '>
 						{props.updatedAt.toDateString()}
 					</div>
 				</td>

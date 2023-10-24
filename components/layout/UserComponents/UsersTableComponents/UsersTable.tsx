@@ -36,7 +36,7 @@ const UsersTable = (props: UsersTableProps) => {
 				<tr>
 					<th>
 						<div
-							className='table-heading cursor-pointer-start cursor-pointer'
+							className='cursor-pointer table-heading-start cursor-pointer-start'
 							onClick={() => sorting('name')}>
 							Name
 							<TiArrowUnsorted />
@@ -44,7 +44,7 @@ const UsersTable = (props: UsersTableProps) => {
 					</th>
 					<th>
 						<div
-							className='table-heading cursor-pointer'
+							className='cursor-pointer table-heading'
 							onClick={() => sorting('email')}>
 							Email
 							<TiArrowUnsorted />
@@ -52,14 +52,14 @@ const UsersTable = (props: UsersTableProps) => {
 					</th>
 					<th>
 						<div
-							className='table-heading cursor-pointer'
+							className='cursor-pointer table-heading'
 							onClick={() => sorting('ticketsAssigned')}>
 							Tickets <TiArrowUnsorted />
 						</div>
 					</th>
-					<th>
+					<th className='hidden lg:block'>
 						<div
-							className='table-heading cursor-pointer'
+							className='hidden cursor-pointer table-heading lg:block'
 							onClick={() => sorting('projects')}>
 							Projects <TiArrowUnsorted />
 						</div>

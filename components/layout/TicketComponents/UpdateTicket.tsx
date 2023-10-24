@@ -72,7 +72,7 @@ const UpdateTicket = (props: Props) => {
 				<Button
 					variant='outline'
 					className='flex items-center justify-between w-40 mt-2'>
-					<span className='text-center w-full'>Update Ticket</span>
+					<span className='w-full text-center'>Update Ticket</span>
 				</Button>
 			</DialogTrigger>
 			<DialogContent>
@@ -96,7 +96,7 @@ const UpdateTicket = (props: Props) => {
 								Choose a status
 							</label>
 							<select
-								className='w-full border text-sm rounded-lg p-2 block'
+								className='block w-full p-2 text-sm border rounded-lg'
 								value={update.status}
 								onChange={(e) => {
 									setUpdate({
@@ -107,7 +107,10 @@ const UpdateTicket = (props: Props) => {
 								{Object.keys(TicketStatus).map(
 									(status, index) => (
 										<option key={index} value={status}>
-											{status}
+											{status === 'OPEN' && 'Open'}
+											{status === 'DONE' && 'Closed'}
+											{status === 'IN_PROGRESS' &&
+												'In Progress'}
 										</option>
 									),
 								)}
@@ -124,7 +127,7 @@ const UpdateTicket = (props: Props) => {
 							</label>
 							<select
 								id='priority'
-								className='w-full border text-sm rounded-lg p-2 block'
+								className='block w-full p-2 text-sm border rounded-lg'
 								value={update.priority}
 								onChange={(e) => {
 									setUpdate({
@@ -136,7 +139,9 @@ const UpdateTicket = (props: Props) => {
 								{Object.keys(TicketPriority).map(
 									(priority, index) => (
 										<option key={index} value={priority}>
-											{priority}
+											{priority === 'LOW' && 'Low'}
+											{priority === 'MEDIUM' && 'Medium'}
+											{priority === 'HIGH' && 'High'}
 										</option>
 									),
 								)}
@@ -154,7 +159,7 @@ const UpdateTicket = (props: Props) => {
 							</label>
 							<select
 								id='assignment'
-								className='w-full border text-sm rounded-lg p-2 block'
+								className='block w-full p-2 text-sm border rounded-lg'
 								value={update.userEmail}
 								onChange={(e) => {
 									setUpdate({
@@ -180,7 +185,7 @@ const UpdateTicket = (props: Props) => {
 
 				{isUpdated && (
 					<div className='w-full h-full text-success'>
-						<p className='text-center text-lg font-bold'>
+						<p className='text-lg font-bold text-center'>
 							Ticket Updated
 						</p>
 						<p>New Status: {updateMessage.newStatus}</p>
